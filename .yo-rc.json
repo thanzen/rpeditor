@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "app-name": "rpeditor",
+    "architecture": "flux",
+    "styles-language": "css"
+  }
+}

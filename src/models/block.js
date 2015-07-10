@@ -1,5 +1,7 @@
 var Block = (function () {
-    function Block() {
+    function Block(id, content) {
+        this.id = id;
+        this.content = content;
     }
     return Block;
 })();

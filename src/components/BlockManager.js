@@ -8,7 +8,7 @@ function getBlockItem(block) {
 }
 exports.BlockManager = React.createClass({
     getDefaultProps: function () {
-        return { blocks: [new block_.Block(), new block_.Block()] };
+        return { blocks: [new block_.Block(0, "This is a big test, how do you think???"), new block_.Block(0, "This is a big test, how do you think???")] };
     },
     getInitialState: function () {
         return { value: "" };

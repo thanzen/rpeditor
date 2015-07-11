@@ -10,9 +10,6 @@ exports.BlockManager = React.createClass({
     getDefaultProps: function () {
         return { blocks: [new block_.Block(0, "This is a big test, how do you think???"), new block_.Block(0, "This is a big test, how do you think???")] };
     },
-    getInitialState: function () {
-        return { value: "" };
-    },
     render: function () {
         var blocks = this.props.blocks.map(getBlockItem);
         return (React.createElement("ul", null, blocks));

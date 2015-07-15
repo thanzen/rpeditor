@@ -20,10 +20,13 @@
         "!./node_modules/**/*"
     ],
     "files": [
+        "./libs/typings/flux.d.ts",
         "./libs/typings/globals.ts",
+        "./libs/typings/react-bootstrap.d.ts",
         "./libs/typings/react-jsx.d.ts",
         "./libs/typings/react-quill.d.ts",
         "./libs/typings/react.d.ts",
+        "./src/dispatcher.ts",
         "./src/models/block.ts",
         "./src/components/Block.tsx",
         "./src/components/BlockManager.tsx",

@@ -1,14 +1,25 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 ///<reference path="../../libs/typings/react.d.ts" />
 var React = require('react');
-var block = require("../models/block");
-exports.Block = React.createClass({
-    getDefaultProps: function () {
-        return { model: new block.Block(0) };
-    },
-    handleClick: function (content) {
-        alert(content);
-    },
-    render: function () {
-        return (React.createElement("li", null, React.createElement("textarea", {"onClick": this.handleClick.bind(this, this.props.model.content)}, this.props.model.content)));
+var ListGroupItem = require('react-bootstrap/lib/ListGroupItem');
+var Block = (function (_super) {
+    __extends(Block, _super);
+    function Block() {
+        _super.apply(this, arguments);
     }
-});
+    Block.prototype.handleClick = function (content) {
+        if (this.props.onClick) {
+            this.props.onClick(content);
+        }
+    };
+    Block.prototype.render = function () {
+        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model.content)}, this.props.model.content));
+    };
+    return Block;
+})(React.Component);
+exports.Block = Block;
+;

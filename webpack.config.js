@@ -16,12 +16,12 @@ module.exports = {
 
   cache: true,
   debug: true,
-  devtool: false,
+  //devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
       './src/components/main.js'
   ],
-
+  devtool: "#inline-source-map", // Jup, sourcemaps
   stats: {
     colors: true,
     reasons: true

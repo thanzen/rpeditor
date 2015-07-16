@@ -2,17 +2,17 @@
 import * as React  from 'react';
 import * as block from "../models/block";
 import * as ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-interface Props{model:block.Block,onClick:Function}
+import disp = require("../dispatcher");
+var dispatcher = disp.Dispatcher;
+var eventType = disp.EventType;
+interface Props{model:block.Block,onClick?:Function}
 export class Block extends React.Component<Props, {}> {
-  handleClick(content: string) {
-    if(this.props.onClick)
-    {
-      this.props.onClick(content);
-    }
+  handleClick=(model: block.Block)=> {
+    dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
   }
   render() {
       return (
-          <ListGroupItem onClick={this.handleClick.bind(this, this.props.model.content) }>
+          <ListGroupItem onClick={this.handleClick.bind(this, this.props.model) }>
             {this.props.model.content}
           </ListGroupItem>
           );

@@ -6,18 +6,19 @@ var __extends = (this && this.__extends) || function (d, b) {
 ///<reference path="../../libs/typings/react.d.ts" />
 var React = require('react');
 var ListGroupItem = require('react-bootstrap/lib/ListGroupItem');
+var disp = require("../dispatcher");
+var dispatcher = disp.Dispatcher;
+var eventType = disp.EventType;
 var Block = (function (_super) {
     __extends(Block, _super);
     function Block() {
         _super.apply(this, arguments);
+        this.handleClick = function (model) {
+            dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
+        };
     }
-    Block.prototype.handleClick = function (content) {
-        if (this.props.onClick) {
-            this.props.onClick(content);
-        }
-    };
     Block.prototype.render = function () {
-        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model.content)}, this.props.model.content));
+        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model)}, this.props.model.content));
     };
     return Block;
 })(React.Component);

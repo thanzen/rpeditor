@@ -10,43 +10,45 @@ var React = require('react');
 var ReactQuill = require('react-quill');
 var Modal = require('react-bootstrap/lib/Modal');
 var Button = require('react-bootstrap/lib/Button');
-var Block = (function (_super) {
-    __extends(Block, _super);
-    function Block(props) {
+var disp = require("../dispatcher");
+var dispatcher = disp.Dispatcher;
+var eventType = disp.EventType;
+var Editor = (function (_super) {
+    __extends(Editor, _super);
+    function Editor(props) {
+        var _this = this;
         _super.call(this, props);
-        this.state = { showModal: false };
+        this.close = function () {
+            _this.setState({ showModal: false });
+            _this.block.content = _this.state.value;
+            dispatcher.dispatch({ type: eventType.QUILL_CLOSE });
+        };
+        this.open = function () {
+            _this.setState({ showModal: true });
+        };
+        this.onTextChange = function (value) {
+            _this.setState({ value: value });
+        };
+        this.state = { showModal: false, value: "" };
+        this.registerEvents();
     }
-    Block.prototype.close = function () {
-        this.setState({ showModal: false });
+    Editor.prototype.render = function () {
+        return (React.createElement(Modal, {"show": this.state.showModal, "onHide": this.close}, React.createElement(Modal.Header, {"closeButton": true}, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement(ReactQuill, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange})), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
     };
-    Block.prototype.open = function () {
-        this.setState({ showModal: true });
+    Editor.prototype.registerEvents = function () {
+        var self = this;
+        dispatcher.register(function (action) {
+            switch (action.type) {
+                case eventType.QUILL_OPEN:
+                    self.setState({ showModal: true, value: action.block.content });
+                    self.block = action.block;
+                default:
+                    break;
+            }
+        });
     };
-    Block.prototype.render = function () {
-        return (React.createElement(Modal, {"show": this.state.showModal, "onHide": this.close}, React.createElement(Modal.Header, {"closeButton": true}, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement(ReactQuill, {"theme": this.props.theme, "value": this.props.value})), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
-    };
-    Block.defaultProps = { theme: "snow", value: "" };
-    return Block;
+    Editor.defaultProps = { theme: "snow", value: "" };
+    return Editor;
 })(React.Component);
-exports.Block = Block;
+exports.Editor = Editor;
 ;
-exports.Editor = React.createClass({
-    getDefaultProps: function () {
-        return { theme: "snow", value: "", showModal: false };
-    },
-    componentDidMount: function () {
-        this.setState({ showModal: this.props.showModal });
-    },
-    getInitialState: function () {
-        return { value: "", showModal: false };
-    },
-    close: function () {
-        this.setState({ showModal: false });
-    },
-    open: function () {
-        this.setState({ showModal: true });
-    },
-    render: function () {
-        return (React.createElement(Modal, {"show": this.state.showModal, "onHide": this.close}, React.createElement(Modal.Header, {"closeButton": true}, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement(ReactQuill, {"theme": this.props.theme, "value": this.props.value})), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
-    }
-});

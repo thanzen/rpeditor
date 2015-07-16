@@ -5,75 +5,61 @@ import * as React  from 'react';
 import * as ReactQuill from 'react-quill';
 import * as Modal from 'react-bootstrap/lib/Modal';
 import * as Button from 'react-bootstrap/lib/Button';
-
+import disp = require("../dispatcher");
+import * as block_ from "../models/block";
+var dispatcher = disp.Dispatcher;
+var eventType = disp.EventType;
 interface Props { theme?: string, value?: string }
-interface State { showModal: boolean }
-export class Block extends React.Component<Props, State> {
+interface State { showModal?: boolean, value?: string }
+export class Editor extends React.Component<Props, State> {
     static defaultProps = { theme: "snow", value: "" }
+    block: block_.Block;
     constructor(props) {
         super(props);
-        this.state = { showModal: false };
-    }
-    close() {
-        this.setState({ showModal: false });
+        this.state = { showModal: false, value: "" };
+        this.registerEvents();
     }
 
-    open() {
+    close = () => {
+        this.setState({ showModal: false });
+        this.block.content = this.state.value;
+        dispatcher.dispatch({ type: eventType.QUILL_CLOSE });
+    }
+
+    open = () => {
         this.setState({ showModal: true });
+    }
+    
+    onTextChange = (value: string) => {
+        this.setState({ value: value });
     }
 
     render() {
         return (
-            <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal show={this.state.showModal} onHide={this.close }>
                     <Modal.Header closeButton>
                       <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <ReactQuill theme={this.props.theme} value={this.props.value} />
+                      <ReactQuill theme={this.props.theme} value={this.state.value} onChange={this.onTextChange}  />
                     </Modal.Body>
                     <Modal.Footer>
-                      <Button onClick={this.close}>Close</Button>
+                      <Button onClick={this.close }>Close</Button>
                     </Modal.Footer>
             </Modal>
             );
     }
-};
-
-
-export var Editor = React.createClass({
-    getDefaultProps() {
-        return { theme: "snow", value: "", showModal: false };
-    },
-    componentDidMount() {
-        this.setState({ showModal: this.props.showModal });
-    },
-
-    //todo:remove value from state if we can.
-    getInitialState() {
-        return { value: "", showModal: false };
-    },
-
-    close() {
-        this.setState({ showModal: false });
-    },
-
-    open() {
-        this.setState({ showModal: true });
-    },
-
-    render() {
-        return (
-            <Modal show={this.state.showModal} onHide={this.close}>
-                      <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                        <ReactQuill theme={this.props.theme} value={this.props.value} />
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button onClick={this.close}>Close</Button>
-                      </Modal.Footer>
-            </Modal>
-            );
+    registerEvents() {
+        var self = this;
+        dispatcher.register(function(action) {
+            //dispatcher.waitFor();
+            switch (action.type) {
+                case eventType.QUILL_OPEN:
+                    self.setState({ showModal: true, value: action.block.content });
+                    self.block = action.block;
+                default:
+                    break;
+            }
+        });
     }
-});
+};

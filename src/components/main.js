@@ -1,6 +1,6 @@
 'use strict';
 
-var RpeditorApp = require('./BlockManager');
+var RpeditorApp = require('./BlockManager').BlockManager;
 var React = require('react');
 var Router = require('react-router');
 var Route = Router.Route;

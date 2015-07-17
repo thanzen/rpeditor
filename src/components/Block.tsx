@@ -13,7 +13,7 @@ export class Block extends React.Component<Props, {}> {
   render() {
       return (
           <ListGroupItem onClick={this.handleClick.bind(this, this.props.model) }>
-            {this.props.model.content}
+          <div dangerouslySetInnerHTML={{__html: this.props.model.content}} />
           </ListGroupItem>
           );
   }

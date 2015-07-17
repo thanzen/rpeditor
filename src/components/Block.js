@@ -18,7 +18,7 @@ var Block = (function (_super) {
         };
     }
     Block.prototype.render = function () {
-        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model)}, this.props.model.content));
+        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model)}, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }})));
     };
     return Block;
 })(React.Component);

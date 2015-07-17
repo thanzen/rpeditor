@@ -23,13 +23,13 @@ export class Editor extends React.Component<Props, State> {
     close = () => {
         this.setState({ showModal: false });
         this.block.content = this.state.value;
-        dispatcher.dispatch({ type: eventType.QUILL_CLOSE });
+        dispatcher.dispatch({ type: eventType.QUILL_CLOSE,block:this.block });
     }
 
     open = () => {
         this.setState({ showModal: true });
     }
-    
+
     onTextChange = (value: string) => {
         this.setState({ value: value });
     }

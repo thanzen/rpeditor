@@ -21,7 +21,7 @@ var Editor = (function (_super) {
         this.close = function () {
             _this.setState({ showModal: false });
             _this.block.content = _this.state.value;
-            dispatcher.dispatch({ type: eventType.QUILL_CLOSE });
+            dispatcher.dispatch({ type: eventType.QUILL_CLOSE, block: _this.block });
         };
         this.open = function () {
             _this.setState({ showModal: true });

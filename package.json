@@ -10,6 +10,7 @@
   "mainInput": "main",
   "mainOutput": "main",
   "dependencies": {
+    "bootstrap": "^3.3.5",
     "events": "^1.0.2",
     "flux": "^2.0.1",
     "normalize.css": "~3.0.3",

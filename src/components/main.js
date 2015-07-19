@@ -8,6 +8,8 @@ var Route = Router.Route;
 require('../../node_modules/bootstrap/dist/css/bootstrap.css');
 require('../styles/quill.base.css');
 require('../styles/quill.snow.css');
+require('../styles/editor.css');
+
 var content = document.getElementById('content');
 
 var Routes = (

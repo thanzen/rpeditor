@@ -13,6 +13,11 @@ var Button = require('react-bootstrap/lib/Button');
 var disp = require("../dispatcher");
 var dispatcher = disp.Dispatcher;
 var eventType = disp.EventType;
+var dialogStyle = {
+    width: '100%',
+    height: '400px',
+    overflow: 'auto'
+};
 var Editor = (function (_super) {
     __extends(Editor, _super);
     function Editor(props) {
@@ -33,7 +38,7 @@ var Editor = (function (_super) {
         this.registerEvents();
     }
     Editor.prototype.render = function () {
-        return (React.createElement(Modal, {"show": this.state.showModal, "onHide": this.close}, React.createElement(Modal.Header, {"closeButton": true}, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement(ReactQuill, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange})), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
+        return (React.createElement(Modal, {"show": this.state.showModal, "dialogClassName": 'rpeditor-quill-dialog'}, React.createElement(Modal.Header, {"closeButton": true}, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement("div", {"style": dialogStyle}, React.createElement(ReactQuill, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange}))), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
     };
     Editor.prototype.registerEvents = function () {
         var self = this;

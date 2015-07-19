@@ -11,6 +11,12 @@ var dispatcher = disp.Dispatcher;
 var eventType = disp.EventType;
 interface Props { theme?: string, value?: string }
 interface State { showModal?: boolean, value?: string }
+let dialogStyle = {
+    width: '100%',
+    height: '400px',
+    overflow: 'auto'
+}
+
 export class Editor extends React.Component<Props, State> {
     static defaultProps = { theme: "snow", value: "" }
     block: block_.Block;
@@ -23,7 +29,7 @@ export class Editor extends React.Component<Props, State> {
     close = () => {
         this.setState({ showModal: false });
         this.block.content = this.state.value;
-        dispatcher.dispatch({ type: eventType.QUILL_CLOSE,block:this.block });
+        dispatcher.dispatch({ type: eventType.QUILL_CLOSE, block: this.block });
     }
 
     open = () => {
@@ -36,12 +42,15 @@ export class Editor extends React.Component<Props, State> {
 
     render() {
         return (
-            <Modal show={this.state.showModal} onHide={this.close }>
+            <Modal show={this.state.showModal} dialogClassName='rpeditor-quill-dialog'>
                     <Modal.Header closeButton>
                       <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <ReactQuill theme={this.props.theme} value={this.state.value} onChange={this.onTextChange}  />
+                    <div style={dialogStyle}>
+                    //todo: replace react-quill component.(high)
+                      <ReactQuill theme={this.props.theme} value={this.state.value} onChange={this.onTextChange}   />
+                    </div>
                     </Modal.Body>
                     <Modal.Footer>
                       <Button onClick={this.close }>Close</Button>
@@ -49,6 +58,7 @@ export class Editor extends React.Component<Props, State> {
             </Modal>
             );
     }
+
     registerEvents() {
         var self = this;
         dispatcher.register(function(action) {

@@ -27,9 +27,11 @@ export class BlockManager extends React.Component<Props, State> {
         this.state = { value: "", blocks: [new block_.Block(0, "Next gen editor")] };
         this.registerEvents();
     }
+
     handleAddBlock = () => {
         this.addBlock(new block_.Block(0));
     }
+
     addBlock = (block: block_.Block) => {
         if (block) {
             this.state.blocks.push(block);

@@ -30,6 +30,7 @@
         "./src/models/block.ts",
         "./src/components/Block.tsx",
         "./src/components/BlockManager.tsx",
-        "./src/components/Editor.tsx"
+        "./src/components/Editor.tsx",
+        "./src/components/Preview.tsx"
     ]
 }

@@ -11,3 +11,9 @@ declare module 'react-bootstrap/lib/ListGroupItem'{
 declare module 'react-bootstrap/lib/ListGroup'{
     export = Any;
 }
+declare module 'react-bootstrap/lib/TabbedArea'{
+    export = Any;
+}
+declare module 'react-bootstrap/lib/TabPane'{
+    export = Any;
+}

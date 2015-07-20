@@ -42,8 +42,8 @@ export class Editor extends React.Component<Props, State> {
 
     render() {
         return (
-            <Modal show={this.state.showModal} dialogClassName='rpeditor-quill-dialog'>
-                    <Modal.Header closeButton>
+            <Modal show={this.state.showModal} dialogClassName='rpeditor-quill-dialog' onHide={function(){}}>
+                    <Modal.Header>
                       <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

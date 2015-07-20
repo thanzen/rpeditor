@@ -9,12 +9,16 @@ var Block_ = require("./Block");
 var block_ = require("../models/block");
 var ListGroup = require('react-bootstrap/lib/ListGroup');
 var Button = require('react-bootstrap/lib/Button');
+var TabbedArea = require('react-bootstrap/lib/TabbedArea');
+var TabPane = require('react-bootstrap/lib/TabPane');
+var preview = require('./Preview');
 var Ed = require('./Editor');
 var disp = require("../dispatcher");
 var dispatcher = disp.Dispatcher;
 var eventType = disp.EventType;
 var Editor = Ed.Editor;
 var BlockView = Block_.Block;
+var Preview = preview.Preview;
 var wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 var buttonsInstance = (React.createElement("div", {"className": 'well', "style": wellStyles}, React.createElement(Button, {"bsStyle": 'primary', "bsSize": 'large', "block": true}, "Block level button")));
 var BlockManager = (function (_super) {
@@ -32,6 +36,9 @@ var BlockManager = (function (_super) {
                 dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: block });
             }
         };
+        this.handleSelect = function (key) {
+            _this.setState({ selectedTab: key });
+        };
         this.removeBlock = function (block) {
             if (block) {
                 var index = _this.state.blocks.indexOf(block, 0);
@@ -41,7 +48,7 @@ var BlockManager = (function (_super) {
                 _this.setState({ blocks: _this.state.blocks });
             }
         };
-        this.state = { value: "", blocks: [new block_.Block(0, "Next gen editor")] };
+        this.state = { value: "", blocks: [new block_.Block(0, "Next gen editor")], selectedTab: 1 };
         this.registerEvents();
     }
     BlockManager.prototype.render = function () {
@@ -49,7 +56,7 @@ var BlockManager = (function (_super) {
         var blocks = this.state.blocks.map(function (item) {
             return React.createElement(BlockView, {"model": item});
         });
-        return (React.createElement("div", null, React.createElement(ListGroup, null, blocks), React.createElement(Button, {"bsSize": 'large', "block": true, "onClick": this.handleAddBlock}, "+"), React.createElement(Editor, {"theme": 'snow', "value": this.state.value})));
+        return (React.createElement(TabbedArea, {"activeKey": this.state.selectedTab, "onSelect": this.handleSelect}, React.createElement(TabPane, {"eventKey": 1, "tab": 'Editor'}, React.createElement(ListGroup, null, blocks), React.createElement(Button, {"bsSize": 'large', "block": true, "onClick": this.handleAddBlock}, "+"), React.createElement(Editor, {"theme": 'snow', "value": this.state.value})), React.createElement(TabPane, {"eventKey": 2, "tab": 'Preview...'}, React.createElement(Preview, {"blocks": this.state.blocks}))));
     };
     BlockManager.prototype.registerEvents = function () {
         var self = this;

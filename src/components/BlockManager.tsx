@@ -7,11 +7,10 @@ import * as Button from 'react-bootstrap/lib/Button';
 import * as TabbedArea from 'react-bootstrap/lib/TabbedArea';
 import * as TabPane from 'react-bootstrap/lib/TabPane';
 import * as preview from './Preview';
-import * as Ed from './Editor';
+import  Editor from './Editor';
 import disp = require("../dispatcher");
 var dispatcher = disp.Dispatcher;
 var eventType = disp.EventType;
-var Editor = Ed.Editor;
 var BlockView = Block_.Block;
 var Preview = preview.Preview;
 

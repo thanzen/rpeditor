@@ -20,8 +20,10 @@
         "!./node_modules/**/*"
     ],
     "files": [
+        "./libs/typings/classnames.d.ts",
         "./libs/typings/flux.d.ts",
         "./libs/typings/globals.ts",
+        "./libs/typings/quill.d.ts",
         "./libs/typings/react-bootstrap.d.ts",
         "./libs/typings/react-jsx.d.ts",
         "./libs/typings/react-quill.d.ts",
@@ -31,6 +33,8 @@
         "./src/components/Block.tsx",
         "./src/components/BlockManager.tsx",
         "./src/components/Editor.tsx",
-        "./src/components/Preview.tsx"
+        "./src/components/Preview.tsx",
+        "./src/components/quill/QEditor.tsx",
+        "./src/components/quill/Toolbar.tsx"
     ]
 }

@@ -1,12 +1,11 @@
 ///<reference path="../../libs/typings/react.d.ts" />
-///<reference path="../../libs/typings/react-quill.d.ts" />
 /// <reference path="../../libs/typings/react-bootstrap.d.ts"/>
 import * as React  from 'react';
-import * as ReactQuill from 'react-quill';
 import * as Modal from 'react-bootstrap/lib/Modal';
 import * as Button from 'react-bootstrap/lib/Button';
 import disp = require("../dispatcher");
 import * as block_ from "../models/block";
+import QuillComponent from "./quill/QEditor";
 var dispatcher = disp.Dispatcher;
 var eventType = disp.EventType;
 interface Props { theme?: string, value?: string }
@@ -14,12 +13,13 @@ interface State { showModal?: boolean, value?: string }
 let dialogStyle = {
     width: '100%',
     height: '400px',
-    overflow: 'auto'
+  //  overflow: 'auto'
 }
 
-export class Editor extends React.Component<Props, State> {
+class Editor extends React.Component<Props, State> {
     static defaultProps = { theme: "snow", value: "" }
     block: block_.Block;
+
     constructor(props) {
         super(props);
         this.state = { showModal: false, value: "" };
@@ -48,8 +48,7 @@ export class Editor extends React.Component<Props, State> {
                     </Modal.Header>
                     <Modal.Body>
                     <div style={dialogStyle}>
-                    //todo: replace react-quill component.(high)
-                      <ReactQuill theme={this.props.theme} value={this.state.value} onChange={this.onTextChange}   />
+                      <QuillComponent theme={this.props.theme} value={this.state.value} onChange={this.onTextChange} ></QuillComponent>
                     </div>
                     </Modal.Body>
                     <Modal.Footer>
@@ -73,3 +72,4 @@ export class Editor extends React.Component<Props, State> {
         });
     }
 };
+export default Editor;

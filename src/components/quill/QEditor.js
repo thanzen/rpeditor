@@ -12,7 +12,7 @@ var Quill = require('quill');
 var cx = require('classnames');
 var editorStyle = {
     overflow: 'auto',
-    maxHeight: '400px'
+    maxHeight: '360px'
 };
 var QuillComponent = (function (_super) {
     __extends(QuillComponent, _super);
@@ -37,6 +37,7 @@ var QuillComponent = (function (_super) {
     QuillComponent.prototype.createEditor = function ($el, config) {
         var editor = new Quill($el, config);
         this.hookEditor(editor);
+        editor.focus();
         return editor;
     };
     QuillComponent.prototype.updateEditor = function (editor, config) {

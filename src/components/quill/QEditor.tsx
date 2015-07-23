@@ -9,7 +9,7 @@ import {PropTypes as T} from 'react';
 import cx = require('classnames');
 let editorStyle = {
     overflow: 'auto',
-    maxHeight:'400px'
+    maxHeight:'360px'
 }
 
 
@@ -36,6 +36,7 @@ export default class QuillComponent extends React.Component<Props, States> {
     createEditor($el, config?: any) {
         const editor = new Quill($el, config);
         this.hookEditor(editor);
+        editor.focus();
         return editor;
     }
 

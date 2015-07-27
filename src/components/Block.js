@@ -8,6 +8,11 @@ var React = require('react');
 var ListGroupItem = require('react-bootstrap/lib/ListGroupItem');
 var dispatcher_1 = require("../dispatcher");
 var eventType_1 = require("../eventType");
+var boxStyle = {
+    padding: "5px",
+    border: "3px solid gray",
+    margin: "0"
+};
 var Block = (function (_super) {
     __extends(Block, _super);
     function Block() {
@@ -20,7 +25,7 @@ var Block = (function (_super) {
         };
     }
     Block.prototype.render = function () {
-        return (React.createElement(ListGroupItem, null, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }}), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleAddBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleRemoveBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
+        return (React.createElement(ListGroupItem, null, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }, "style": boxStyle}), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleAddBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleRemoveBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
     };
     return Block;
 })(React.Component);

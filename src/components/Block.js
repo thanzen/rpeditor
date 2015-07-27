@@ -16,11 +16,11 @@ var Block = (function (_super) {
             dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_OPEN, block: model });
         };
         this.handleRemoveBlock = function (model) {
-            dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_OPEN, block: model });
+            dispatcher_1.default.dispatch({ type: eventType_1.default.BLOCK_DELTE, block: model });
         };
     }
     Block.prototype.render = function () {
-        return (React.createElement(ListGroupItem, null, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }}), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleAddBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs"}, React.createElement("span", {"className": "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
+        return (React.createElement(ListGroupItem, null, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }}), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleAddBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleRemoveBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
     };
     return Block;
 })(React.Component);

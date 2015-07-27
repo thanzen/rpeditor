@@ -11,7 +11,7 @@ export default class Block extends React.Component<Props, {}> {
     dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
   }
   handleRemoveBlock=(model: BlockModal)=> {
-    dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
+    dispatcher.dispatch({ type: eventType.BLOCK_DELTE, block: model });
   }
   render() {
       return (
@@ -20,7 +20,7 @@ export default class Block extends React.Component<Props, {}> {
               <button type="button" className="btn btn-default  btn-xs"  onClick={this.handleAddBlock.bind(this, this.props.model) }>
                 <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
               </button>
-              <button type="button" className="btn btn-default  btn-xs">
+              <button type="button" className="btn btn-default  btn-xs" onClick={this.handleRemoveBlock.bind(this, this.props.model) }>
                 <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
           </ListGroupItem>

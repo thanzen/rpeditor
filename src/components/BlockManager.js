@@ -65,6 +65,12 @@ var BlockManager = (function (_super) {
                     else {
                         self.setState({ blocks: self.state.blocks });
                     }
+                    break;
+                case eventType_1.default.BLOCK_DELTE:
+                    if (action.block) {
+                        self.removeBlock(action.block);
+                    }
+                    break;
                 default:
                     break;
             }

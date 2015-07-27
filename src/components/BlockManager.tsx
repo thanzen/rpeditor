@@ -79,6 +79,12 @@ export class BlockManager extends React.Component<Props, State> {
                     } else {
                         self.setState({ blocks: self.state.blocks });
                     }
+                    break;
+                case eventType.BLOCK_DELTE:
+                    if(action.block){
+                      self.removeBlock(action.block);
+                    }
+                    break;
                 default:
                     break;
             }

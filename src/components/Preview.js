@@ -18,5 +18,6 @@ var Preview = (function (_super) {
     };
     return Preview;
 })(React.Component);
-exports.Preview = Preview;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Preview;
 ;

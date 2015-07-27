@@ -1,19 +1,28 @@
 ///<reference path="../../libs/typings/react.d.ts" />
 import * as React  from 'react';
-import * as block from "../models/block";
+import  {default as BlockModal} from "../models/block";
 import * as ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
-import disp = require("../dispatcher");
-var dispatcher = disp.Dispatcher;
-var eventType = disp.EventType;
-interface Props{model:block.Block,key?:any,onClick?:Function}
-export class Block extends React.Component<Props, {}> {
-  handleClick=(model: block.Block)=> {
+import {default as dispatcher}  from "../dispatcher";
+import  {default as eventType}  from "../eventType";
+
+interface Props{model:BlockModal,key?:any,onClick?:Function}
+export default class Block extends React.Component<Props, {}> {
+  handleAddBlock=(model: BlockModal)=> {
+    dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
+  }
+  handleRemoveBlock=(model: BlockModal)=> {
     dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
   }
   render() {
       return (
-          <ListGroupItem  onClick={this.handleClick.bind(this, this.props.model) }>
-          <div dangerouslySetInnerHTML={{__html: this.props.model.content}} />
+          <ListGroupItem >
+            <div dangerouslySetInnerHTML={{__html: this.props.model.content}}   />
+              <button type="button" className="btn btn-default  btn-xs"  onClick={this.handleAddBlock.bind(this, this.props.model) }>
+                <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+              </button>
+              <button type="button" className="btn btn-default  btn-xs">
+                <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
           </ListGroupItem>
           );
   }

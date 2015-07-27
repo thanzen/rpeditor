@@ -6,21 +6,24 @@ var __extends = (this && this.__extends) || function (d, b) {
 ///<reference path="../../libs/typings/react.d.ts" />
 var React = require('react');
 var ListGroupItem = require('react-bootstrap/lib/ListGroupItem');
-var disp = require("../dispatcher");
-var dispatcher = disp.Dispatcher;
-var eventType = disp.EventType;
+var dispatcher_1 = require("../dispatcher");
+var eventType_1 = require("../eventType");
 var Block = (function (_super) {
     __extends(Block, _super);
     function Block() {
         _super.apply(this, arguments);
-        this.handleClick = function (model) {
-            dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: model });
+        this.handleAddBlock = function (model) {
+            dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_OPEN, block: model });
+        };
+        this.handleRemoveBlock = function (model) {
+            dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_OPEN, block: model });
         };
     }
     Block.prototype.render = function () {
-        return (React.createElement(ListGroupItem, {"onClick": this.handleClick.bind(this, this.props.model)}, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }})));
+        return (React.createElement(ListGroupItem, null, React.createElement("div", {"dangerouslySetInnerHTML": { __html: this.props.model.content }}), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs", "onClick": this.handleAddBlock.bind(this, this.props.model)}, React.createElement("span", {"className": "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {"type": "button", "className": "btn btn-default  btn-xs"}, React.createElement("span", {"className": "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
     };
     return Block;
 })(React.Component);
-exports.Block = Block;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Block;
 ;

@@ -29,6 +29,7 @@
         "./libs/typings/react-quill.d.ts",
         "./libs/typings/react.d.ts",
         "./src/dispatcher.ts",
+        "./src/eventType.ts",
         "./src/models/block.ts",
         "./src/components/Block.tsx",
         "./src/components/BlockManager.tsx",

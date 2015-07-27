@@ -5,4 +5,5 @@ var Block = (function () {
     }
     return Block;
 })();
-exports.Block = Block;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Block;

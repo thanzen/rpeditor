@@ -4,21 +4,20 @@ import * as React  from 'react';
 import * as Modal from 'react-bootstrap/lib/Modal';
 import * as Button from 'react-bootstrap/lib/Button';
 import disp = require("../dispatcher");
-import * as block_ from "../models/block";
+import  {default as BlockModal} from "../models/block";
 import QuillComponent from "./quill/QEditor";
-var dispatcher = disp.Dispatcher;
-var eventType = disp.EventType;
+import {default as dispatcher}  from "../dispatcher";
+import  {default as eventType}  from "../eventType";
 interface Props { theme?: string, value?: string }
 interface State { showModal?: boolean, value?: string }
 let dialogStyle = {
     width: '100%',
-    height: '400px',
-  //  overflow: 'auto'
+    height: '400px'
 }
 
 class Editor extends React.Component<Props, State> {
     static defaultProps = { theme: "snow", value: "" }
-    block: block_.Block;
+    block: BlockModal;
 
     constructor(props) {
         super(props);

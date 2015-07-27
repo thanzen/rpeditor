@@ -8,13 +8,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require('react');
 var Modal = require('react-bootstrap/lib/Modal');
 var Button = require('react-bootstrap/lib/Button');
-var disp = require("../dispatcher");
 var QEditor_1 = require("./quill/QEditor");
-var dispatcher = disp.Dispatcher;
-var eventType = disp.EventType;
+var dispatcher_1 = require("../dispatcher");
+var eventType_1 = require("../eventType");
 var dialogStyle = {
     width: '100%',
-    height: '400px',
+    height: '400px'
 };
 var Editor = (function (_super) {
     __extends(Editor, _super);
@@ -24,7 +23,7 @@ var Editor = (function (_super) {
         this.close = function () {
             _this.setState({ showModal: false });
             _this.block.content = _this.state.value;
-            dispatcher.dispatch({ type: eventType.QUILL_CLOSE, block: _this.block });
+            dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_CLOSE, block: _this.block });
         };
         this.open = function () {
             _this.setState({ showModal: true });
@@ -40,9 +39,9 @@ var Editor = (function (_super) {
     };
     Editor.prototype.registerEvents = function () {
         var self = this;
-        dispatcher.register(function (action) {
+        dispatcher_1.default.register(function (action) {
             switch (action.type) {
-                case eventType.QUILL_OPEN:
+                case eventType_1.default.QUILL_OPEN:
                     self.setState({ showModal: true, value: action.block.content });
                     self.block = action.block;
                 default:
@@ -54,4 +53,5 @@ var Editor = (function (_super) {
     return Editor;
 })(React.Component);
 ;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Editor;

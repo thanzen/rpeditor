@@ -5,19 +5,16 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 ///<reference path="../../libs/typings/react.d.ts" />
 var React = require('react');
-var Block_ = require("./Block");
-var block_ = require("../models/block");
+var Block_1 = require("./Block");
+var block_1 = require("../models/block");
 var ListGroup = require('react-bootstrap/lib/ListGroup');
 var Button = require('react-bootstrap/lib/Button');
 var TabbedArea = require('react-bootstrap/lib/TabbedArea');
 var TabPane = require('react-bootstrap/lib/TabPane');
-var preview = require('./Preview');
+var Preview_1 = require('./Preview');
 var Editor_1 = require('./Editor');
-var disp = require("../dispatcher");
-var dispatcher = disp.Dispatcher;
-var eventType = disp.EventType;
-var BlockView = Block_.Block;
-var Preview = preview.Preview;
+var dispatcher_1 = require("../dispatcher");
+var eventType_1 = require("../eventType");
 var wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 var buttonsInstance = (React.createElement("div", {"className": 'well', "style": wellStyles}, React.createElement(Button, {"bsStyle": 'primary', "bsSize": 'large', "block": true}, "Block level button")));
 var BlockManager = (function (_super) {
@@ -26,13 +23,13 @@ var BlockManager = (function (_super) {
         var _this = this;
         _super.call(this, props);
         this.handleAddBlock = function () {
-            _this.addBlock(new block_.Block(0));
+            _this.addBlock(new block_1.default(0));
         };
         this.addBlock = function (block) {
             if (block) {
                 _this.state.blocks.push(block);
                 _this.setState({ blocks: _this.state.blocks });
-                dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: block });
+                dispatcher_1.default.dispatch({ type: eventType_1.default.QUILL_OPEN, block: block });
             }
         };
         this.handleSelect = function (key) {
@@ -47,21 +44,21 @@ var BlockManager = (function (_super) {
                 _this.setState({ blocks: _this.state.blocks });
             }
         };
-        this.state = { value: "", blocks: [new block_.Block(0, "Next gen editor")], selectedTab: 1 };
+        this.state = { value: "", blocks: [new block_1.default(0, "Next gen editor")], selectedTab: 1 };
         this.registerEvents();
     }
     BlockManager.prototype.render = function () {
         var self = this;
         var blocks = this.state.blocks.map(function (item) {
-            return React.createElement(BlockView, {"model": item});
+            return React.createElement(Block_1.default, {"model": item});
         });
-        return (React.createElement(TabbedArea, {"activeKey": this.state.selectedTab, "onSelect": this.handleSelect}, React.createElement(TabPane, {"eventKey": 1, "tab": 'Editor'}, React.createElement(ListGroup, null, blocks), React.createElement(Button, {"bsSize": 'large', "block": true, "onClick": this.handleAddBlock}, "+"), React.createElement(Editor_1.default, {"theme": 'snow', "value": this.state.value})), React.createElement(TabPane, {"eventKey": 2, "tab": 'Preview...'}, React.createElement(Preview, {"blocks": this.state.blocks}))));
+        return (React.createElement(TabbedArea, {"activeKey": this.state.selectedTab, "onSelect": this.handleSelect}, React.createElement(TabPane, {"eventKey": 1, "tab": 'Editor'}, React.createElement(ListGroup, null, blocks), React.createElement(Button, {"bsSize": 'large', "block": true, "onClick": this.handleAddBlock}, "+"), React.createElement(Editor_1.default, {"theme": 'snow', "value": this.state.value})), React.createElement(TabPane, {"eventKey": 2, "tab": 'Preview...'}, React.createElement(Preview_1.default, {"blocks": this.state.blocks}))));
     };
     BlockManager.prototype.registerEvents = function () {
         var self = this;
-        dispatcher.register(function (action) {
+        dispatcher_1.default.register(function (action) {
             switch (action.type) {
-                case eventType.QUILL_CLOSE:
+                case eventType_1.default.QUILL_CLOSE:
                     if (!action.block.content || action.block.content.trim() === "") {
                         self.removeBlock(action.block);
                     }

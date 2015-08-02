@@ -21,10 +21,12 @@ const buttonsInstance = (
     </div>
     );
 
+let content ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to modify,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a></br>1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
+
 export default class BlockManager extends React.Component<Props, State> {
     constructor(props) {
         super(props);
-        this.state = { value: "", blocks: [new BlockModal(idGenerator++, "Next gen editor")], selectedTab: 1 };
+        this.state = { value: "", blocks: [new BlockModal(idGenerator++, content)], selectedTab: 1 };
         this.registerEvents();
     }
 

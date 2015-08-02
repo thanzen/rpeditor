@@ -11,7 +11,7 @@ var Toolbar_1 = require('./Toolbar');
 var Quill = require('quill');
 var cx = require('classnames');
 var editorStyle = {
-    overflow: 'auto',
+    overflow: 'hidden',
     maxHeight: '360px'
 };
 var QuillComponent = (function (_super) {
@@ -113,4 +113,5 @@ var QuillComponent = (function (_super) {
     };
     return QuillComponent;
 })(React.Component);
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = QuillComponent;

@@ -8,7 +8,7 @@ import * as Quill from 'quill';
 import {PropTypes as T} from 'react';
 import cx = require('classnames');
 let editorStyle = {
-    overflow: 'auto',
+    overflow: 'hidden',
     maxHeight:'360px'
 }
 

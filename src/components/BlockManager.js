@@ -19,7 +19,7 @@ var idGenerator = 0;
 var wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 var buttonsInstance = (React.createElement("div", {"className": 'well', "style": wellStyles}, React.createElement(Button, {"bsStyle": 'primary', "bsSize": 'large', "block": true}, "Block level button")));
 var content1 = "Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to modify,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
-var content2 = "1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
+var content2 = "Todo:</br>1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var BlockManager = (function (_super) {
     __extends(BlockManager, _super);
     function BlockManager(props) {

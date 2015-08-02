@@ -27,6 +27,7 @@
         "./libs/typings/react-bootstrap.d.ts",
         "./libs/typings/react-jsx.d.ts",
         "./libs/typings/react-quill.d.ts",
+        "./libs/typings/react-router.d.ts",
         "./libs/typings/react.d.ts",
         "./src/dispatcher.ts",
         "./src/eventType.ts",
@@ -35,6 +36,7 @@
         "./src/components/BlockManager.tsx",
         "./src/components/Editor.tsx",
         "./src/components/Preview.tsx",
+        "./src/components/main.tsx",
         "./src/components/quill/QEditor.tsx",
         "./src/components/quill/Toolbar.tsx"
     ]

@@ -78,5 +78,6 @@ var BlockManager = (function (_super) {
     };
     return BlockManager;
 })(React.Component);
-exports.BlockManager = BlockManager;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = BlockManager;
 ;

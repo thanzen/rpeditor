@@ -21,7 +21,7 @@ const buttonsInstance = (
     </div>
     );
 
-export class BlockManager extends React.Component<Props, State> {
+export default class BlockManager extends React.Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = { value: "", blocks: [new BlockModal(0, "Next gen editor")], selectedTab: 1 };

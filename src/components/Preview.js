@@ -12,7 +12,7 @@ var Preview = (function (_super) {
     }
     Preview.prototype.render = function () {
         var blocks = this.props.blocks.map(function (item) {
-            return React.createElement("div", {"dangerouslySetInnerHTML": { __html: item.content }});
+            return React.createElement("div", {"dangerouslySetInnerHTML": { __html: item.content }, "key": item.id});
         });
         return (React.createElement("div", null, blocks));
     };

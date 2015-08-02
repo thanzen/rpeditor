@@ -14,6 +14,9 @@ let dialogStyle = {
     width: '100%',
     height: '400px'
 }
+let modules={
+  'image-tooltip':true
+}
 
 class Editor extends React.Component<Props, State> {
     static defaultProps = { theme: "snow", value: "" }
@@ -47,7 +50,7 @@ class Editor extends React.Component<Props, State> {
                     </Modal.Header>
                     <Modal.Body>
                     <div style={dialogStyle}>
-                      <QuillComponent theme={this.props.theme} value={this.state.value} onChange={this.onTextChange} ></QuillComponent>
+                      <QuillComponent theme={this.props.theme} value={this.state.value} onChange={this.onTextChange} modules={modules} ></QuillComponent>
                     </div>
                     </Modal.Body>
                     <Modal.Footer>

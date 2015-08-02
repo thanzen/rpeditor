@@ -10,7 +10,7 @@ export default class Preview extends React.Component<Props, State> {
     }
     render() {
         var blocks: any = this.props.blocks.map(function(item) {
-            return <div dangerouslySetInnerHTML={{__html: item.content}} /*key={item.id}*/ />
+            return <div dangerouslySetInnerHTML={{__html: item.content}} key={item.id} />
         });
         return (
           <div>{blocks}</div>

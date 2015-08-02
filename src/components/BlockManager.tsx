@@ -10,7 +10,7 @@ import {default as Preview} from './Preview';
 import  Editor from './Editor';
 import {default as dispatcher}  from "../dispatcher";
 import  {default as eventType}  from "../eventType";
-
+var idGenerator:number = 0;
 interface Props { }
 interface State { value?: string, blocks?: Array<BlockModal>, selectedTab?: number }
 const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
@@ -24,12 +24,12 @@ const buttonsInstance = (
 export default class BlockManager extends React.Component<Props, State> {
     constructor(props) {
         super(props);
-        this.state = { value: "", blocks: [new BlockModal(0, "Next gen editor")], selectedTab: 1 };
+        this.state = { value: "", blocks: [new BlockModal(idGenerator++, "Next gen editor")], selectedTab: 1 };
         this.registerEvents();
     }
 
     handleAddBlock = () => {
-        this.addBlock(new BlockModal(0));
+        this.addBlock(new BlockModal(idGenerator++));
     }
 
     addBlock = (block: BlockModal) => {
@@ -56,7 +56,7 @@ export default class BlockManager extends React.Component<Props, State> {
     render() {
         var self = this;
         var blocks: any = this.state.blocks.map(function(item) {
-            return <BlockView model={item} /*key={item.id}*/ />;
+            return <BlockView model={item} key={item.id} />;
         });
         return (
             <TabbedArea activeKey={this.state.selectedTab} onSelect={this.handleSelect}>

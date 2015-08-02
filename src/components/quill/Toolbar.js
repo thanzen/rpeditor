@@ -60,7 +60,9 @@ var defaultItems = [
     { label: 'Blocks', type: 'group', items: [
             { type: 'bullet', label: 'Bullet' },
             { type: 'separator' },
-            { type: 'list', label: 'List' }
+            { type: 'list', label: 'List' },
+            { type: 'separator' },
+            { type: 'image', label: 'Image' }
         ] }
 ];
 function renderSeparator(key) {
@@ -123,4 +125,5 @@ var QuillToolbar = (function (_super) {
     };
     return QuillToolbar;
 })(React.Component);
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = QuillToolbar;

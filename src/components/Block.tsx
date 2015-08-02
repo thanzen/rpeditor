@@ -21,7 +21,7 @@ export default class Block extends React.Component<Props, {}> {
   }
   render() {
       return (
-          <ListGroupItem >
+          <ListGroupItem>
             <div dangerouslySetInnerHTML={{__html: this.props.model.content}}  style={boxStyle} />
               <button type="button" className="btn btn-default  btn-xs"  onClick={this.handleAddBlock.bind(this, this.props.model) }>
                 <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>

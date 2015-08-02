@@ -1,3 +1,7 @@
+/*reference
+https://zenoamaro.github.io/react-quill
+https://github.com/hawkrives/react-quill
+*/
 ///<reference path="../../../libs/typings/react.d.ts" />
 ///<reference path="../../../libs/typings/classnames.d.ts" />
 

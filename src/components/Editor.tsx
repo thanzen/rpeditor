@@ -46,7 +46,7 @@ class Editor extends React.Component<Props, State> {
         return (
             <Modal show={this.state.showModal} dialogClassName='rpeditor-quill-dialog' onHide={function(){}}>
                     <Modal.Header>
-                      <Modal.Title>Modal heading</Modal.Title>
+                      <Modal.Title>Blcok Editor</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                     <div style={dialogStyle}>

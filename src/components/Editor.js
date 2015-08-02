@@ -38,7 +38,7 @@ var Editor = (function (_super) {
         this.registerEvents();
     }
     Editor.prototype.render = function () {
-        return (React.createElement(Modal, {"show": this.state.showModal, "dialogClassName": 'rpeditor-quill-dialog', "onHide": function () { }}, React.createElement(Modal.Header, null, React.createElement(Modal.Title, null, "Modal heading")), React.createElement(Modal.Body, null, React.createElement("div", {"style": dialogStyle}, React.createElement(QEditor_1.default, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange, "modules": modules}))), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
+        return (React.createElement(Modal, {"show": this.state.showModal, "dialogClassName": 'rpeditor-quill-dialog', "onHide": function () { }}, React.createElement(Modal.Header, null, React.createElement(Modal.Title, null, "Blcok Editor")), React.createElement(Modal.Body, null, React.createElement("div", {"style": dialogStyle}, React.createElement(QEditor_1.default, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange, "modules": modules}))), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
     };
     Editor.prototype.registerEvents = function () {
         var self = this;

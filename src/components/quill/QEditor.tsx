@@ -10,7 +10,7 @@ https://github.com/hawkrives/react-quill
 import * as React from 'react';
 import QuillToolbar from './Toolbar';
 import * as Quill from 'quill';
-import {PropTypes as T} from 'react';
+//import {PropTypes as T} from 'react';
 import cx = require('classnames');
 let editorStyle = {
     overflow: 'hidden',

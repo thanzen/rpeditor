@@ -1,4 +1,5 @@
-declare var Any: any;
 declare module 'react-router'{
-    export = Any;
+    export var Router :any;
+    export var Route:any;
+    export var Link :any;
 }

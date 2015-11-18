@@ -1,7 +1,7 @@
 ///<reference path="../../libs/typings/react.d.ts" />
 import * as React  from 'react';
 import  {default as BlockModal} from "../models/block";
-import * as ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import {ListGroupItem} from 'react-bootstrap';
 import {default as dispatcher}  from "../dispatcher";
 import  {default as eventType}  from "../eventType";
 

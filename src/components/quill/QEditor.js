@@ -1,16 +1,10 @@
-/*reference
-https://zenoamaro.github.io/react-quill
-https://github.com/hawkrives/react-quill
-*/
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-///<reference path="../../../libs/typings/react.d.ts" />
-///<reference path="../../../libs/typings/classnames.d.ts" />
-///<reference path="../../../libs/typings/quill.d.ts" />
 var React = require('react');
+var ReactDom = require('react-dom');
 var Toolbar_1 = require('./Toolbar');
 var Quill = require('quill');
 var cx = require('classnames');
@@ -35,7 +29,7 @@ var QuillComponent = (function (_super) {
             if (React.Children.count(_this.props.children)) {
                 return React.Children.only(_this.props.children);
             }
-            return (React.createElement("div", null, React.createElement(Toolbar_1.default, {"key": 'toolbar', "ref": 'toolbar', "items": _this.props.toolbar}), React.createElement("div", {"style": editorStyle}, React.createElement("div", {"key": 'editor', "ref": 'editor', "className": 'quill-contents', "dangerouslySetInnerHTML": { __html: _this.getEditorContents() }}))));
+            return (React.createElement("div", null, React.createElement(Toolbar_1.default, {key: 'toolbar', ref: 'toolbar', items: _this.props.toolbar}), React.createElement("div", {style: editorStyle}, React.createElement("div", {key: 'editor', ref: 'editor', className: 'quill-contents', dangerouslySetInnerHTML: { __html: _this.getEditorContents() }}))));
         };
     }
     QuillComponent.prototype.createEditor = function ($el, config) {
@@ -45,9 +39,6 @@ var QuillComponent = (function (_super) {
         return editor;
     };
     QuillComponent.prototype.updateEditor = function (editor, config) {
-        // NOTE:
-        // This tears the editor down, and reinitializes it with the new
-        // config. Ugly but necessary as there is no api for updating it.
         this.destroyEditor(editor);
         this.createEditor(config);
         return editor;
@@ -87,19 +78,19 @@ var QuillComponent = (function (_super) {
         if (!modules.toolbar) {
             modules = JSON.parse(JSON.stringify(modules));
             modules.toolbar = {
-                container: React.findDOMNode(this.refs.toolbar)
+                container: ReactDom.findDOMNode(this.refs.toolbar)
             };
         }
         return { readOnly: readOnly, theme: theme, formats: formats, styles: styles, modules: modules, pollInterval: pollInterval };
     };
     QuillComponent.prototype.getEditorElement = function () {
-        return React.findDOMNode(this.refs.editor);
+        return ReactDom.findDOMNode(this.refs.editor);
     };
     QuillComponent.prototype.getEditorContents = function () {
         return this.props.value || this.props.defaultValue || '';
     };
     QuillComponent.prototype.render = function () {
-        return (React.createElement("div", {"className": cx('quill', this.props.className), "onChange": this.preventDefault}, this.renderContents()));
+        return (React.createElement("div", {className: cx('quill', this.props.className), onChange: this.preventDefault}, this.renderContents()));
     };
     QuillComponent.prototype.onEditorChange = function (value, delta, soure) {
         if (value !== this.state.value && this.props.onChange) {

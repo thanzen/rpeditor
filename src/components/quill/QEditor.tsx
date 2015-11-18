@@ -3,11 +3,8 @@ https://zenoamaro.github.io/react-quill
 https://github.com/hawkrives/react-quill
 */
 
-///<reference path="../../../libs/typings/react.d.ts" />
-///<reference path="../../../libs/typings/classnames.d.ts" />
-///<reference path="../../../libs/typings/quill.d.ts" />
-
 import * as React from 'react';
+import * as ReactDom from 'react-dom';
 import QuillToolbar from './Toolbar';
 import * as Quill from 'quill';
 //import {PropTypes as T} from 'react';
@@ -143,7 +140,7 @@ export default class QuillComponent extends React.Component<Props, States> {
             // because it's shared between components.
             modules = JSON.parse(JSON.stringify(modules));
             modules.toolbar = {
-                container: React.findDOMNode(this.refs.toolbar)
+                container: ReactDom.findDOMNode(this.refs.toolbar)
             }
         }
 
@@ -151,7 +148,7 @@ export default class QuillComponent extends React.Component<Props, States> {
     }
 
     getEditorElement() {
-        return React.findDOMNode(this.refs.editor);
+        return ReactDom.findDOMNode(this.refs.editor);
     }
 
     getEditorContents() {

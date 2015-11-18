@@ -1,11 +1,7 @@
-///<reference path="../../libs/typings/react.d.ts" />
 import * as React  from 'react';
-import {default as BlockView} from "./Block";
+import  BlockView from "./Block";
 import  {default as BlockModal} from "../models/block";
-import * as ListGroup from 'react-bootstrap/lib/ListGroup';
-import * as Button from 'react-bootstrap/lib/Button';
-import * as TabbedArea from 'react-bootstrap/lib/TabbedArea';
-import * as TabPane from 'react-bootstrap/lib/TabPane';
+import  {ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
 import {default as Preview} from './Preview';
 import  Editor from './Editor';
 import {default as dispatcher}  from "../dispatcher";
@@ -61,14 +57,14 @@ export default class BlockManager extends React.Component<Props, State> {
             return <BlockView model={item} key={item.id} />;
         });
         return (
-            <TabbedArea activeKey={this.state.selectedTab} onSelect={this.handleSelect}>
-              <TabPane eventKey={1} tab='Editor'>
+            <Tabs activeKey={this.state.selectedTab} onSelect={this.handleSelect}>
+              <Tab eventKey={1} title='Editor'>
                 <ListGroup>{blocks}</ListGroup>
                 <Button bsSize='large' block onClick = {this.handleAddBlock}>+</Button>
                 <Editor theme={'snow'} value={this.state.value}></Editor>
-              </TabPane>
-              <TabPane eventKey={2} tab='Preview...'><Preview blocks={this.state.blocks}/></TabPane>
-            </TabbedArea>
+              </Tab>
+              <Tab eventKey={2} title='Preview...'><Preview blocks={this.state.blocks}/></Tab>
+            </Tabs>
             );
     }
     registerEvents() {

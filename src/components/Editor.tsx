@@ -1,8 +1,5 @@
-///<reference path="../../libs/typings/react.d.ts" />
-/// <reference path="../../libs/typings/react-bootstrap.d.ts"/>
 import * as React  from 'react';
-import * as Modal from 'react-bootstrap/lib/Modal';
-import * as Button from 'react-bootstrap/lib/Button';
+import {Modal,Button} from 'react-bootstrap';
 import disp = require("../dispatcher");
 import  {default as BlockModal} from "../models/block";
 import QuillComponent from "./quill/QEditor";
@@ -48,7 +45,7 @@ class Editor extends React.Component<Props, State> {
                     <Modal.Header>
                       <Modal.Title>Blcok Editor</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                       <Modal.Body>
                     <div style={dialogStyle}>
                       <QuillComponent theme={this.props.theme} value={this.state.value} onChange={this.onTextChange} modules={modules} ></QuillComponent>
                     </div>

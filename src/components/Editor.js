@@ -3,11 +3,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-///<reference path="../../libs/typings/react.d.ts" />
-/// <reference path="../../libs/typings/react-bootstrap.d.ts"/>
 var React = require('react');
-var Modal = require('react-bootstrap/lib/Modal');
-var Button = require('react-bootstrap/lib/Button');
+var react_bootstrap_1 = require('react-bootstrap');
 var QEditor_1 = require("./quill/QEditor");
 var dispatcher_1 = require("../dispatcher");
 var eventType_1 = require("../eventType");
@@ -38,7 +35,7 @@ var Editor = (function (_super) {
         this.registerEvents();
     }
     Editor.prototype.render = function () {
-        return (React.createElement(Modal, {"show": this.state.showModal, "dialogClassName": 'rpeditor-quill-dialog', "onHide": function () { }}, React.createElement(Modal.Header, null, React.createElement(Modal.Title, null, "Blcok Editor")), React.createElement(Modal.Body, null, React.createElement("div", {"style": dialogStyle}, React.createElement(QEditor_1.default, {"theme": this.props.theme, "value": this.state.value, "onChange": this.onTextChange, "modules": modules}))), React.createElement(Modal.Footer, null, React.createElement(Button, {"onClick": this.close}, "Close"))));
+        return (React.createElement(react_bootstrap_1.Modal, {show: this.state.showModal, dialogClassName: 'rpeditor-quill-dialog', onHide: function () { }}, React.createElement(react_bootstrap_1.Modal.Header, null, React.createElement(react_bootstrap_1.Modal.Title, null, "Blcok Editor")), React.createElement(react_bootstrap_1.Modal.Body, null, React.createElement("div", {style: dialogStyle}, React.createElement(QEditor_1.default, {theme: this.props.theme, value: this.state.value, onChange: this.onTextChange, modules: modules}))), React.createElement(react_bootstrap_1.Modal.Footer, null, React.createElement(react_bootstrap_1.Button, {onClick: this.close}, "Close"))));
     };
     Editor.prototype.registerEvents = function () {
         var self = this;

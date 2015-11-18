@@ -1,15 +1,9 @@
-///<reference path="../../libs/typings/react.d.ts" />
-///<reference path="../../libs/typings/react-router.d.ts" />
 var BlockManager_1 = require("./BlockManager");
 var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
+var ReactDom = require('react-dom');
+var react_router_1 = require('react-router');
 require('../../node_modules/bootstrap/dist/css/bootstrap.css');
 require('../styles/quill.base.css');
 require('../styles/quill.snow.css');
 require('../styles/editor.css');
-var content = document.getElementById('content');
-var Routes = (React.createElement(Route, {"handler": BlockManager_1.default}, React.createElement(Route, {"name": "/", "handler": BlockManager_1.default})));
-Router.run(Routes, function (Handler) {
-    React.render(React.createElement(Handler, null), content);
-});
+ReactDom.render((React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: BlockManager_1.default}, React.createElement(react_router_1.Route, {path: "*", component: BlockManager_1.default})))), document.getElementById('content'));

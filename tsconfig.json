@@ -20,12 +20,11 @@
         "!./node_modules/**/*"
     ],
     "files": [
-        "./dist/dispatcher.ts",
-        "./dist/eventType.ts",
         "./libs/typings/classnames.d.ts",
         "./libs/typings/flux.d.ts",
         "./libs/typings/quill.d.ts",
         "./libs/typings/react-bootstrap.d.ts",
+        "./libs/typings/react-dom.d.ts",
         "./libs/typings/react-jsx.d.ts",
         "./libs/typings/react-quill.d.ts",
         "./libs/typings/react-router.d.ts",
@@ -40,5 +39,8 @@
         "./src/components/Preview.tsx",
         "./src/components/quill/QEditor.tsx",
         "./src/components/quill/Toolbar.tsx"
-    ]
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }

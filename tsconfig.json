@@ -25,7 +25,6 @@
         "./libs/typings/quill.d.ts",
         "./libs/typings/react-bootstrap.d.ts",
         "./libs/typings/react-dom.d.ts",
-        "./libs/typings/react-jsx.d.ts",
         "./libs/typings/react-quill.d.ts",
         "./libs/typings/react-router.d.ts",
         "./libs/typings/react.d.ts",

@@ -6,4 +6,4 @@ require('../../node_modules/bootstrap/dist/css/bootstrap.css');
 require('../styles/quill.base.css');
 require('../styles/quill.snow.css');
 require('../styles/editor.css');
-ReactDom.render((React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: BlockManager_1.default}, React.createElement(react_router_1.Route, {path: "*", component: BlockManager_1.default})))), document.getElementById('content'));
+ReactDom.render((React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {"path": "/", "component": BlockManager_1.default}, React.createElement(react_router_1.Route, {"path": "*", "component": BlockManager_1.default})))), document.getElementById('content'));

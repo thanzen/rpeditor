@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -13,7 +14,7 @@ var dispatcher_1 = require("../dispatcher");
 var eventType_1 = require("../eventType");
 var idGenerator = 0;
 var wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
-var buttonsInstance = (React.createElement("div", {"className": 'well', "style": wellStyles}, React.createElement(react_bootstrap_1.Button, {"bsStyle": 'primary', "bsSize": 'large', "block": true}, "Block level button")));
+var buttonsInstance = (React.createElement("div", {className: 'well', style: wellStyles}, React.createElement(react_bootstrap_1.Button, {bsStyle: 'primary', bsSize: 'large', block: true}, "Block level button")));
 var content1 = "Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to modify,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 var content2 = "Todo:</br>1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var BlockManager = (function (_super) {
@@ -49,9 +50,9 @@ var BlockManager = (function (_super) {
     BlockManager.prototype.render = function () {
         var self = this;
         var blocks = this.state.blocks.map(function (item) {
-            return React.createElement(Block_1.default, {"model": item, "key": item.id});
+            return React.createElement(react_bootstrap_1.ListGroupItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}));
         });
-        return (React.createElement(react_bootstrap_1.Tabs, {"activeKey": this.state.selectedTab, "onSelect": this.handleSelect}, React.createElement(react_bootstrap_1.Tab, {"eventKey": 1, "title": 'Editor'}, React.createElement(react_bootstrap_1.ListGroup, null, blocks), React.createElement(react_bootstrap_1.Button, {"bsSize": 'large', "block": true, "onClick": this.handleAddBlock}, "+"), React.createElement(Editor_1.default, {"theme": 'snow', "value": this.state.value})), React.createElement(react_bootstrap_1.Tab, {"eventKey": 2, "title": 'Preview...'}, React.createElement(Preview_1.default, {"blocks": this.state.blocks}))));
+        return (React.createElement(react_bootstrap_1.Tabs, {activeKey: this.state.selectedTab, onSelect: this.handleSelect}, React.createElement(react_bootstrap_1.Tab, {eventKey: 1, title: 'Editor'}, React.createElement(react_bootstrap_1.ListGroup, null, blocks), React.createElement(react_bootstrap_1.Button, {bsSize: 'large', block: true, onClick: this.handleAddBlock}, "+"), React.createElement(Editor_1.default, {theme: 'snow', value: this.state.value})), React.createElement(react_bootstrap_1.Tab, {eventKey: 2, title: 'Preview...'}, React.createElement(Preview_1.default, {blocks: this.state.blocks}))));
     };
     BlockManager.prototype.registerEvents = function () {
         var self = this;

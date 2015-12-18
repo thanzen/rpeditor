@@ -1,7 +1,7 @@
 import * as React  from 'react';
 import  BlockView from "./Block";
 import  {default as BlockModal} from "../models/block";
-import  {ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
+import  {ListGroupItem,ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
 import {default as Preview} from './Preview';
 import  Editor from './Editor';
 import {default as dispatcher}  from "../dispatcher";
@@ -16,7 +16,6 @@ const buttonsInstance = (
     <Button bsStyle='primary' bsSize='large' block>Block level button</Button>
     </div>
     );
-
 let content1 ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to modify,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 let content2="Todo:</br>1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 export default class BlockManager extends React.Component<Props, State> {
@@ -54,7 +53,7 @@ export default class BlockManager extends React.Component<Props, State> {
     render() {
         var self = this;
         var blocks: any = this.state.blocks.map(function(item) {
-            return <BlockView model={item} key={item.id} />;
+            return <ListGroupItem  key={item.id} > <BlockView model={item}/></ListGroupItem>;
         });
         return (
             <Tabs activeKey={this.state.selectedTab} onSelect={this.handleSelect}>

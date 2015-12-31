@@ -1,7 +1,4 @@
-/*reference
-https://zenoamaro.github.io/react-quill
-https://github.com/hawkrives/react-quill
-*/
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -33,7 +30,7 @@ var QuillComponent = (function (_super) {
             if (React.Children.count(_this.props.children)) {
                 return React.Children.only(_this.props.children);
             }
-            return (React.createElement("div", null, React.createElement(Toolbar_1.default, {"key": 'toolbar', "ref": 'toolbar', "items": _this.props.toolbar}), React.createElement("div", {"style": editorStyle}, React.createElement("div", {"key": 'editor', "ref": 'editor', "className": 'quill-contents', "dangerouslySetInnerHTML": { __html: _this.getEditorContents() }}))));
+            return (React.createElement("div", null, React.createElement(Toolbar_1.default, {key: 'toolbar', ref: 'toolbar', items: _this.props.toolbar}), React.createElement("div", {style: editorStyle}, React.createElement("div", {key: 'editor', ref: 'editor', className: 'quill-contents', dangerouslySetInnerHTML: { __html: _this.getEditorContents() }}))));
         };
     }
     QuillComponent.prototype.createEditor = function ($el, config) {
@@ -43,9 +40,6 @@ var QuillComponent = (function (_super) {
         return editor;
     };
     QuillComponent.prototype.updateEditor = function (editor, config) {
-        // NOTE:
-        // This tears the editor down, and reinitializes it with the new
-        // config. Ugly but necessary as there is no api for updating it.
         this.destroyEditor(editor);
         this.createEditor(config);
         return editor;
@@ -97,7 +91,7 @@ var QuillComponent = (function (_super) {
         return this.props.value || this.props.defaultValue || '';
     };
     QuillComponent.prototype.render = function () {
-        return (React.createElement("div", {"className": cx('quill', this.props.className), "onChange": this.preventDefault}, this.renderContents()));
+        return (React.createElement("div", {className: cx('quill', this.props.className), onChange: this.preventDefault}, this.renderContents()));
     };
     QuillComponent.prototype.onEditorChange = function (value, delta, soure) {
         if (value !== this.state.value && this.props.onChange) {

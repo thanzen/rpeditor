@@ -1,9 +1,16 @@
-var BlockManager_1 = require("./BlockManager");
+"use strict";
+var App_1 = require("./App");
 var React = require('react');
 var ReactDom = require('react-dom');
 var react_router_1 = require('react-router');
+var redux_1 = require('redux');
+var react_redux_1 = require('react-redux');
+var reducers_1 = require('../reducers');
+var context_1 = require('../context');
 require('../../node_modules/bootstrap/dist/css/bootstrap.css');
 require('../styles/quill.base.css');
 require('../styles/quill.snow.css');
 require('../styles/editor.css');
-ReactDom.render((React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {"path": "/", "component": BlockManager_1.default}, React.createElement(react_router_1.Route, {"path": "*", "component": BlockManager_1.default})))), document.getElementById('content'));
+var store = redux_1.createStore(reducers_1.default);
+context_1.default.store = store;
+ReactDom.render((React.createElement(react_redux_1.Provider, {store: store}, React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: App_1.default}, React.createElement(react_router_1.Route, {path: "*", component: App_1.default}))))), document.getElementById('container'));

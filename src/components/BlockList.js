@@ -13,9 +13,8 @@ var BlockList = (function (_super) {
         _super.call(this, props);
     }
     BlockList.prototype.render = function () {
-        var self = this;
         var blocks = this.props.blocks.map(function (item) {
-            return React.createElement(react_bootstrap_1.ListGroupItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}));
+            return React.createElement(react_bootstrap_1.ListGroupItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}), " ");
         });
         return (React.createElement(react_bootstrap_1.ListGroup, null, blocks));
     };

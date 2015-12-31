@@ -1,3 +1,4 @@
+"use strict";
 var Block = (function () {
     function Block(id, content) {
         this.id = id;

@@ -1,12 +1,11 @@
 import * as React  from 'react';
 import {Modal,Button} from 'react-bootstrap';
-import disp = require("../dispatcher");
 import  {default as BlockModal} from "../models/block";
 import QuillComponent from "./quill/QEditor";
-import {default as dispatcher}  from "../dispatcher";
 import  {default as eventType}  from "../eventType";
-interface Props { theme?: string, value?: string }
-interface State { showModal?: boolean, value?: string }
+import {changeQuillContent, openEditor, closeEditor, submitChange} from "../actions";
+interface Props { theme?: string, quillBlock?:BlockModal, showBlockEditor?:boolean, quillContent?: string }
+interface State {}
 let dialogStyle = {
     width: '100%',
     height: '400px'
@@ -16,59 +15,40 @@ let modules={
 }
 
 class Editor extends React.Component<Props, State> {
-    static defaultProps = { theme: "snow", value: "" }
-    block: BlockModal;
-
     constructor(props) {
         super(props);
-        this.state = { showModal: false, value: "" };
-        this.registerEvents();
     }
 
     close = () => {
-        this.setState({ showModal: false });
-        this.block.content = this.state.value;
-        dispatcher.dispatch({ type: eventType.QUILL_CLOSE, block: this.block });
+       closeEditor();
     }
 
-    open = () => {
-        this.setState({ showModal: true });
+    onSubmit =()=>{
+      var block =  new BlockModal(this.props.quillBlock.id,this.props.quillContent);
+      submitChange(block);
     }
 
     onTextChange = (value: string) => {
-        this.setState({ value: value });
+        changeQuillContent(value);
     }
 
     render() {
         return (
-            <Modal show={this.state.showModal} dialogClassName='rpeditor-quill-dialog' onHide={function(){}}>
-                    <Modal.Header>
-                      <Modal.Title>Blcok Editor</Modal.Title>
-                    </Modal.Header>
-                       <Modal.Body>
-                    <div style={dialogStyle}>
-                      <QuillComponent theme={this.props.theme} value={this.state.value} onChange={this.onTextChange} modules={modules} ></QuillComponent>
-                    </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={this.close }>Close</Button>
-                    </Modal.Footer>
+            <Modal show={this.props.showBlockEditor} dialogClassName='rpeditor-quill-dialog' onHide={function(){}}>
+              <Modal.Header>
+                <Modal.Title>Blcok Editor</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <div style={dialogStyle}>
+                    <QuillComponent theme={this.props.theme} value={this.props.quillContent} onChange={this.onTextChange} modules={modules}></QuillComponent>
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button onClick={this.onSubmit}>OK</Button>
+                  <Button onClick={this.close}>CANCEL</Button>
+                </Modal.Footer>
             </Modal>
             );
-    }
-
-    registerEvents() {
-        var self = this;
-        dispatcher.register(function(action) {
-            //dispatcher.waitFor();
-            switch (action.type) {
-                case eventType.QUILL_OPEN:
-                    self.setState({ showModal: true, value: action.block.content });
-                    self.block = action.block;
-                default:
-                    break;
-            }
-        });
     }
 };
 export default Editor;

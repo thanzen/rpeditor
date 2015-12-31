@@ -12,12 +12,11 @@ export default class BlockList extends React.Component<Props, {}> {
         super(props);
     }
     render() {
-        var self = this;
         var blocks: any = this.props.blocks.map(function(item) {
-            return <ListGroupItem key={item.id} > <BlockView model={item}/></ListGroupItem>;
+            return <ListGroupItem key={item.id} > <BlockView model={item}/> </ListGroupItem>;
         });
         return (
-              <ListGroup>{blocks}</ListGroup>
-            );
+            <ListGroup>{blocks}</ListGroup>
+        );
     }
 };

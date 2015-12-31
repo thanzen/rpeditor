@@ -1,91 +1,91 @@
-import * as React  from 'react';
-import  BlockView from "./Block";
-import  {default as BlockModal} from "../models/block";
-import  {ListGroupItem,ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
-import {default as Preview} from './Preview';
-import  Editor from './Editor';
-import {default as dispatcher}  from "../dispatcher";
-import  {default as eventType}  from "../eventType";
-var idGenerator:number = 0;
-interface Props { }
-interface State { value?: string, blocks?: Array<BlockModal>, selectedTab?: number }
-const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
-
-const buttonsInstance = (
-    <div className='well' style={wellStyles}>
-    <Button bsStyle='primary' bsSize='large' block>Block level button</Button>
-    </div>
-    );
-let content1 ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to modify,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
-let content2="Todo:</br>1. Support block level  drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
-export default class BlockManager extends React.Component<Props, State> {
-    constructor(props) {
-        super(props);
-        this.state = { value: "", blocks: [new BlockModal(idGenerator++, content1),new BlockModal(idGenerator++, content2)], selectedTab: 1 };
-        this.registerEvents();
-    }
-
-    handleAddBlock = () => {
-        this.addBlock(new BlockModal(idGenerator++));
-    }
-
-    addBlock = (block: BlockModal) => {
-        if (block) {
-            this.state.blocks.push(block);
-            this.setState({ blocks: this.state.blocks });
-            dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: block });
-        }
-    }
-
-    handleSelect=(key)=> {
-        this.setState({ selectedTab: key });
-    }
-
-    removeBlock = (block: BlockModal) => {
-        if (block) {
-            var index = this.state.blocks.indexOf(block, 0);
-            if (index != undefined) {
-                this.state.blocks.splice(index, 1);
-            }
-            this.setState({ blocks: this.state.blocks });
-        }
-    }
-    render() {
-        var self = this;
-        var blocks: any = this.state.blocks.map(function(item) {
-            return <ListGroupItem  key={item.id} > <BlockView model={item}/></ListGroupItem>;
-        });
-        return (
-            <Tabs activeKey={this.state.selectedTab} onSelect={this.handleSelect}>
-              <Tab eventKey={1} title='Editor'>
-                <ListGroup>{blocks}</ListGroup>
-                <Button bsSize='large' block onClick = {this.handleAddBlock}>+</Button>
-                <Editor theme={'snow'} value={this.state.value}></Editor>
-              </Tab>
-              <Tab eventKey={2} title='Preview...'><Preview blocks={this.state.blocks}/></Tab>
-            </Tabs>
-            );
-    }
-    registerEvents() {
-        var self = this;
-        dispatcher.register(function(action) {
-            switch (action.type) {
-                case eventType.QUILL_CLOSE:
-                    if (!action.block.content || action.block.content.trim() === "") {
-                        self.removeBlock(action.block);
-                    } else {
-                        self.setState({ blocks: self.state.blocks });
-                    }
-                    break;
-                case eventType.BLOCK_DELTE:
-                    if(action.block){
-                      self.removeBlock(action.block);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        });
-    }
-
-};
+// import * as React  from 'react';
+// import  BlockView from "./Block";
+// import  {default as BlockModal} from "../models/block";
+// import  {ListGroupItem,ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
+// import {default as Preview} from './Preview';
+// import  Editor from './Editor';
+// import {default as dispatcher}  from "../dispatcher";
+// import  {default as eventType}  from "../eventType";
+// var idGenerator:number = 0;
+// interface Props { }
+// interface State { value?: string, blocks?: Array<BlockModal>, selectedTab?: number }
+// const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+//
+// const buttonsInstance = (
+//     <div className='well' style={wellStyles}>
+//     <Button bsStyle='primary' bsSize='large' block>Block level button</Button>
+//     </div>
+//     );
+// let content1 ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
+// let content2="Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
+// export default class BlockManager extends React.Component<Props, State> {
+//     constructor(props) {
+//         super(props);
+//         this.state = { value: "", blocks: [new BlockModal(idGenerator++, content1),new BlockModal(idGenerator++, content2)], selectedTab: 1 };
+//         this.registerEvents();
+//     }
+//
+//     handleAddBlock = () => {
+//         this.addBlock(new BlockModal(idGenerator++));
+//     }
+//
+//     addBlock = (block: BlockModal) => {
+//         if (block) {
+//             this.state.blocks.push(block);
+//             this.setState({ blocks: this.state.blocks });
+//             dispatcher.dispatch({ type: eventType.QUILL_OPEN, block: block });
+//         }
+//     }
+//
+//     handleSelect=(key)=> {
+//         this.setState({ selectedTab: key });
+//     }
+//
+//     removeBlock = (block: BlockModal) => {
+//         if (block) {
+//             var index = this.state.blocks.indexOf(block, 0);
+//             if (index != undefined) {
+//                 this.state.blocks.splice(index, 1);
+//             }
+//             this.setState({ blocks: this.state.blocks });
+//         }
+//     }
+//     render() {
+//         var self = this;
+//         var blocks: any = this.state.blocks.map(function(item) {
+//             return <ListGroupItem  key={item.id} > <BlockView model={item}/></ListGroupItem>;
+//         });
+//         return (
+//             <Tabs activeKey={this.state.selectedTab} onSelect={this.handleSelect}>
+//               <Tab eventKey={1} title='Editor'>
+//                 <ListGroup>{blocks}</ListGroup>
+//                 <Button bsSize='large' block onClick = {this.handleAddBlock}>+</Button>
+//                 <Editor theme={'snow'} value={this.state.value}></Editor>
+//               </Tab>
+//               <Tab eventKey={2} title='Preview...'><Preview blocks={this.state.blocks}/></Tab>
+//             </Tabs>
+//             );
+//     }
+//     registerEvents() {
+//         var self = this;
+//         dispatcher.register(function(action) {
+//             switch (action.type) {
+//                 case eventType.QUILL_CLOSE:
+//                     if (!action.block.content || action.block.content.trim() === "") {
+//                         self.removeBlock(action.block);
+//                     } else {
+//                         self.setState({ blocks: self.state.blocks });
+//                     }
+//                     break;
+//                 case eventType.BLOCK_DELTE:
+//                     if(action.block){
+//                       self.removeBlock(action.block);
+//                     }
+//                     break;
+//                 default:
+//                     break;
+//             }
+//         });
+//     }
+//
+// };

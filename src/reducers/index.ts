@@ -1,13 +1,10 @@
 import { combineReducers } from 'redux'
 import { default as EventType } from '../eventType';
-// import  {update} from 'react-addons-update';
-import update = require("react-addons-update");
 import {default as Block} from '../models/block';
-import {uuid} from '../utils';
 let content1 ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 let content2="Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var initialState ={
-    blocks: [new Block(uuid(), content1),new Block(uuid(), content2)],
+    blocks: [new Block(1, content1),new Block(2, content2)],
     showBlockEditor:false,
     selectedTab : 1,
     quillContent:"",
@@ -34,16 +31,14 @@ function selectTab(state:number=initialState.selectedTab, action){
 
 function addBlock(state:Block[]=initialState.blocks, action) {
   if(action.block.id == 0){
-    action.block.id = uuid();
+    if(!action.block.content) return state;
+    action.block.id = state.reduce((maxId,block)=>Math.max(maxId,block.id),-1) + 1;
   }
-  return  update(state,{$push: [action.block]})
+  return  [...state,action.block];
 }
 
 function deleteBlock(state:Block[]=initialState.blocks, action) {
-  var index =state.indexOf(action.block, 0);
-  var blocks = state.concat();
-  blocks.splice(index,1);
-  return blocks;
+  return state.filter(block=>block.id != action.block.id);
 }
 
 function changeQuillContent(state:string="", action){
@@ -55,14 +50,9 @@ function changeQuillContent(state:string="", action){
 
 function submitBlockChange(state:Block[]=initialState.blocks, action){
   if(action.type == EventType.QUILL_SUBMIT_CHANGE){
-    var blocks:Block[] = state.concat();
-    blocks.forEach(function (block) {
-      if(block.id == action.block.id ){
-          block.content = action.block.content;
-          return;
-      }
-    });
-    return blocks;
+    return state.map(block =>
+          block.id === action.block.id ? new Block(block.id,action.block.content):block
+      );
   }
   return state;
 }

@@ -7,7 +7,6 @@ import  Editor from './Editor';
 import  {default as eventType}  from "../eventType";
 import {uuid} from "../utils";
 
-
 import {openEditor,closeEditor,addBlock,deleteBlock,selectTab} from '../actions'
 import { connect } from 'react-redux';
 interface Props { blocks?:BlockModal[], selectedTab?: number, quillBlock?:BlockModal, showBlockEditor?:boolean, quillContent?:string}
@@ -31,7 +30,7 @@ class App extends React.Component<Props, State> {
               <Tab eventKey={1} title='Editor'>
                 <ListGroup>{blocksList}</ListGroup>
                 <Button bsSize='large' block onClick = {()=>{
-                  addBlock(new BlockModal(uuid(),""));
+                  addBlock(new BlockModal(0,""));
                 }}>+</Button>
                 <Editor theme={'snow'} quillBlock={quillBlock} showBlockEditor={showBlockEditor} quillContent={quillContent}></Editor>
               </Tab>

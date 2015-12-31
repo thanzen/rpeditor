@@ -13,6 +13,9 @@ function closeEditor() {
 }
 exports.closeEditor = closeEditor;
 function submitChange(block) {
+    if (block.id == 0) {
+        context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_ADD, block: block });
+    }
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_SUBMIT_CHANGE, block: block });
     closeEditor();
 }
@@ -23,9 +26,7 @@ function selectTab(key) {
 }
 exports.selectTab = selectTab;
 function addBlock(block) {
-    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_ADD, block: block });
-    context_1.default.store.dispatch({ type: eventType_1.default.QUILL_OPEN });
-    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_SELECTED, block: block });
+    openEditor(block);
 }
 exports.addBlock = addBlock;
 function deleteBlock(block) {

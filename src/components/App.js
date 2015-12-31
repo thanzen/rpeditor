@@ -10,7 +10,6 @@ var block_1 = require("../models/block");
 var react_bootstrap_1 = require('react-bootstrap');
 var Preview_1 = require('./Preview');
 var Editor_1 = require('./Editor');
-var utils_1 = require("../utils");
 var actions_1 = require('../actions');
 var react_redux_1 = require('react-redux');
 var wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
@@ -28,7 +27,7 @@ var App = (function (_super) {
             return React.createElement(react_bootstrap_1.ListGroupItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}));
         });
         return (React.createElement(react_bootstrap_1.Tabs, {activeKey: selectedTab, onSelect: this.handleSelect}, React.createElement(react_bootstrap_1.Tab, {eventKey: 1, title: 'Editor'}, React.createElement(react_bootstrap_1.ListGroup, null, blocksList), React.createElement(react_bootstrap_1.Button, {bsSize: 'large', block: true, onClick: function () {
-            actions_1.addBlock(new block_1.default(utils_1.uuid(), ""));
+            actions_1.addBlock(new block_1.default(0, ""));
         }}, "+"), React.createElement(Editor_1.default, {theme: 'snow', quillBlock: quillBlock, showBlockEditor: showBlockEditor, quillContent: quillContent})), React.createElement(react_bootstrap_1.Tab, {eventKey: 2, title: 'Preview...'}, React.createElement(Preview_1.default, {blocks: this.props.blocks}))));
     };
     return App;

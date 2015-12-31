@@ -1,13 +1,11 @@
 "use strict";
 var redux_1 = require('redux');
 var eventType_1 = require('../eventType');
-var update = require("react-addons-update");
 var block_1 = require('../models/block');
-var utils_1 = require('../utils');
 var content1 = "Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 var content2 = "Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var initialState = {
-    blocks: [new block_1.default(utils_1.uuid(), content1), new block_1.default(utils_1.uuid(), content2)],
+    blocks: [new block_1.default(1, content1), new block_1.default(2, content2)],
     showBlockEditor: false,
     selectedTab: 1,
     quillContent: "",
@@ -34,16 +32,15 @@ function selectTab(state, action) {
 function addBlock(state, action) {
     if (state === void 0) { state = initialState.blocks; }
     if (action.block.id == 0) {
-        action.block.id = utils_1.uuid();
+        if (!action.block.content)
+            return state;
+        action.block.id = state.reduce(function (maxId, block) { return Math.max(maxId, block.id); }, -1) + 1;
     }
-    return update(state, { $push: [action.block] });
+    return state.concat([action.block]);
 }
 function deleteBlock(state, action) {
     if (state === void 0) { state = initialState.blocks; }
-    var index = state.indexOf(action.block, 0);
-    var blocks = state.concat();
-    blocks.splice(index, 1);
-    return blocks;
+    return state.filter(function (block) { return block.id != action.block.id; });
 }
 function changeQuillContent(state, action) {
     if (state === void 0) { state = ""; }
@@ -55,14 +52,9 @@ function changeQuillContent(state, action) {
 function submitBlockChange(state, action) {
     if (state === void 0) { state = initialState.blocks; }
     if (action.type == eventType_1.default.QUILL_SUBMIT_CHANGE) {
-        var blocks = state.concat();
-        blocks.forEach(function (block) {
-            if (block.id == action.block.id) {
-                block.content = action.block.content;
-                return;
-            }
+        return state.map(function (block) {
+            return block.id === action.block.id ? new block_1.default(block.id, action.block.content) : block;
         });
-        return blocks;
     }
     return state;
 }

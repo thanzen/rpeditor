@@ -20,6 +20,7 @@
         "!./node_modules/**/*"
     ],
     "files": [
+        "./libs/typings/amazeui-react.d.ts",
         "./libs/typings/classnames.d.ts",
         "./libs/typings/flux.d.ts",
         "./libs/typings/quill.d.ts",
@@ -42,12 +43,13 @@
         "./src/stores/index.ts",
         "./src/utils.ts",
         "./src/components/App.tsx",
+        "./src/components/AppNew.tsx",
         "./src/components/Block.tsx",
         "./src/components/BlockContent.tsx",
         "./src/components/BlockFooter.tsx",
         "./src/components/BlockList.tsx",
-        "./src/components/BlockManager.tsx",
         "./src/components/Editor.tsx",
+        "./src/components/EditorNew.tsx",
         "./src/components/main.tsx",
         "./src/components/Preview.tsx",
         "./src/components/quill/QEditor.tsx",

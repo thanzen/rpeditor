@@ -8,8 +8,8 @@ var React = require('react');
 var BlockContent_1 = require("./BlockContent");
 var BlockFooter_1 = require("./BlockFooter");
 var boxStyle = {
-    padding: "5px",
-    border: "3px solid gray",
+    padding: "2px",
+    border: "1px solid blue",
     margin: "0"
 };
 var Block = (function (_super) {
@@ -21,7 +21,7 @@ var Block = (function (_super) {
         return (React.createElement("div", null, React.createElement(BlockContent_1.default, {model: this.props.model, boxStyle: boxStyle}), React.createElement(BlockFooter_1.default, {model: this.props.model})));
     };
     return Block;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Block;
 ;

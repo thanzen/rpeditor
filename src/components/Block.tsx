@@ -7,8 +7,8 @@ import {default as eventType}  from "../eventType";
 interface Props { model: BlockModal}
 
 const boxStyle = {
-  padding: "5px",
-  border: "3px solid gray",
+  padding: "2px",
+  border: "1px solid blue",
   margin: "0"
 };
 

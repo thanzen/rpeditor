@@ -7,12 +7,8 @@ export default class Block extends React.Component<Props, {}> {
   render() {
     return (
       <div>
-          <button type="button" className="btn btn-default  btn-xs"  onClick={()=>{openEditor(this.props.model);}}>
-              <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-          </button>
-          <button type="button" className="btn btn-default  btn-xs" onClick={()=>{deleteBlock(this.props.model);}}>
-              <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </button>
+          <a><i className="am-icon-pencil am-icon-fw" onClick={()=>{openEditor(this.props.model);}}></i></a>
+          <a><i className="am-icon-minus am-icon-fw" onClick={()=>{deleteBlock(this.props.model);}}></i></a>
       </div>
     );
   }

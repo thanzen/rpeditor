@@ -13,10 +13,10 @@ var Block = (function (_super) {
     }
     Block.prototype.render = function () {
         var _this = this;
-        return (React.createElement("div", null, React.createElement("button", {type: "button", className: "btn btn-default  btn-xs", onClick: function () { actions_1.openEditor(_this.props.model); }}, React.createElement("span", {className: "glyphicon glyphicon-pencil", "aria-hidden": "true"})), React.createElement("button", {type: "button", className: "btn btn-default  btn-xs", onClick: function () { actions_1.deleteBlock(_this.props.model); }}, React.createElement("span", {className: "glyphicon glyphicon-remove", "aria-hidden": "true"}))));
+        return (React.createElement("div", null, React.createElement("a", null, React.createElement("i", {className: "am-icon-pencil am-icon-fw", onClick: function () { actions_1.openEditor(_this.props.model); }})), React.createElement("a", null, React.createElement("i", {className: "am-icon-minus am-icon-fw", onClick: function () { actions_1.deleteBlock(_this.props.model); }}))));
     };
     return Block;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Block;
 ;

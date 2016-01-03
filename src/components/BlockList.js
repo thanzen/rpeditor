@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = require('react');
 var Block_1 = require("./Block");
-var react_bootstrap_1 = require('react-bootstrap');
+var amazeui_react_1 = require('amazeui-react');
 var BlockList = (function (_super) {
     __extends(BlockList, _super);
     function BlockList(props) {
@@ -14,12 +14,12 @@ var BlockList = (function (_super) {
     }
     BlockList.prototype.render = function () {
         var blocks = this.props.blocks.map(function (item) {
-            return React.createElement(react_bootstrap_1.ListGroupItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}), " ");
+            return React.createElement(amazeui_react_1.ListItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}), " ");
         });
-        return (React.createElement(react_bootstrap_1.ListGroup, null, blocks));
+        return (React.createElement(amazeui_react_1.List, null, blocks));
     };
     return BlockList;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = BlockList;
 ;

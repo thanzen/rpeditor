@@ -36,7 +36,7 @@ var Editor = (function (_super) {
         return (React.createElement(react_bootstrap_1.Modal, {show: this.props.showBlockEditor, dialogClassName: 'rpeditor-quill-dialog', onHide: function () { }}, React.createElement(react_bootstrap_1.Modal.Header, null, React.createElement(react_bootstrap_1.Modal.Title, null, "Blcok Editor")), React.createElement(react_bootstrap_1.Modal.Body, null, React.createElement("div", {style: dialogStyle}, React.createElement(QEditor_1.default, {theme: this.props.theme, value: this.props.quillContent, onChange: this.onTextChange, modules: modules}))), React.createElement(react_bootstrap_1.Modal.Footer, null, React.createElement(react_bootstrap_1.Button, {onClick: this.onSubmit}, "OK"), React.createElement(react_bootstrap_1.Button, {onClick: this.close}, "CANCEL"))));
     };
     return Editor;
-})(React.Component);
+}(React.Component));
 ;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Editor;

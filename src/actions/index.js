@@ -3,10 +3,14 @@ var eventType_1 = require('../eventType');
 var context_1 = require('../context');
 function openEditor(block) {
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_OPEN });
-    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_SELECTED, block: block });
+    setSelectedQuillBlock(block);
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_CONTENT_CHANGE, content: block.content });
 }
 exports.openEditor = openEditor;
+function setSelectedQuillBlock(block) {
+    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_SELECTED, block: block });
+}
+exports.setSelectedQuillBlock = setSelectedQuillBlock;
 function closeEditor() {
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_CLOSE });
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_CONTENT_CHANGE, content: "" });

@@ -7,18 +7,34 @@ var __extends = (this && this.__extends) || function (d, b) {
 var React = require('react');
 var BlockContent_1 = require("./BlockContent");
 var BlockFooter_1 = require("./BlockFooter");
+var actions_1 = require("../actions");
 var boxStyle = {
     padding: "2px",
     border: "1px solid blue",
     margin: "0"
 };
+var selectedStyle = {
+    background: "#3374C2"
+};
+var deSelectedStyle = {
+    background: "white"
+};
 var Block = (function (_super) {
     __extends(Block, _super);
     function Block() {
+        var _this = this;
         _super.apply(this, arguments);
+        this.isSelected = function () {
+            return _this.props.quillBlockModel && _this.props.model.id == _this.props.quillBlockModel.id;
+        };
     }
     Block.prototype.render = function () {
-        return (React.createElement("div", null, React.createElement(BlockContent_1.default, {model: this.props.model, boxStyle: boxStyle}), React.createElement(BlockFooter_1.default, {model: this.props.model})));
+        var _this = this;
+        var selected = this.isSelected();
+        var style = selected ? selectedStyle : deSelectedStyle;
+        return (React.createElement("div", {className: "block", style: style, onClick: function () {
+            actions_1.setSelectedQuillBlock(selected ? null : _this.props.model);
+        }}, React.createElement(BlockContent_1.default, {model: this.props.model, boxStyle: boxStyle}), React.createElement(BlockFooter_1.default, {model: this.props.model})));
     };
     return Block;
 }(React.Component));

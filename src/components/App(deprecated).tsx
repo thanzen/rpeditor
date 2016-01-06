@@ -1,9 +1,9 @@
 import * as React  from 'react';
 import  BlockView from "./Block";
 import  {default as BlockModal} from "../models/block";
-import  {ListItem,List,Button,Tabs} from 'amazeui-react';
+import  {ListGroupItem,ListGroup,Button,Tabs,Tab} from 'react-bootstrap';
 import {default as Preview} from './Preview';
-import  Editor from './EditorNew';
+import  Editor from './Editor';
 import  {default as eventType}  from "../eventType";
 import {uuid} from "../utils";
 
@@ -13,7 +13,7 @@ interface Props { blocks?:BlockModal[], selectedTab?: number, quillBlock?:BlockM
 interface State { }
 const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-class AppNew extends React.Component<Props, State> {
+class App extends React.Component<Props, State> {
     constructor(props) {
         super(props);
     }
@@ -23,20 +23,20 @@ class AppNew extends React.Component<Props, State> {
     render() {
         const { blocks, selectedTab, quillBlock, showBlockEditor,quillContent } = this.props;
         var blocksList: any = this.props.blocks.map(function(item) {
-            return <ListItem  key={item.id} > <BlockView model={item}/></ListItem>;
+            return <ListGroupItem  key={item.id} > <BlockView model={item}/></ListGroupItem>;
         });
         return (
             <Tabs activeKey={selectedTab} onSelect={this.handleSelect}>
-              <Tabs.Item eventKey={1} title='Editor'>
-                <List>{blocksList}</List>
+              <Tab eventKey={1} title='Editor'>
+                <ListGroup>{blocksList}</ListGroup>
                 <Button bsSize='large' block onClick = {()=>{
                   addBlock(new BlockModal(0,""));
                 }}>+</Button>
                 <Editor theme={'snow'} quillBlock={quillBlock} showBlockEditor={showBlockEditor} quillContent={quillContent}></Editor>
-              </Tabs.Item>
-              <Tabs.Item eventKey={2} title='Preview...'>
+              </Tab>
+              <Tab eventKey={2} title='Preview...'>
                 <Preview blocks={this.props.blocks}/>
-              </Tabs.Item>
+              </Tab>
             </Tabs>
       );
     }
@@ -54,4 +54,4 @@ function select(state) {
   }
 }
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(AppNew)
+export default connect(select)(App)

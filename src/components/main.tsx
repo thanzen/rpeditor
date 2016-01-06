@@ -1,5 +1,5 @@
 // import  {default as BlockManager} from "./App";
-import  {default as BlockManager} from "./AppNew";
+import  {default as BlockManager} from "./App";
 
 import * as React  from 'react';
 import * as ReactDom from 'react-dom';
@@ -10,7 +10,7 @@ import { default as reducers } from '../reducers';
 import {default as context} from '../context';
 import {default as Block} from '../models/block';
 // CSS
-// import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+// import '../../node_modules/bootstrap/dist/css/bootstrap.css';//deprecated
 // import '../styles/amazeui.css';
 //
 import '../../node_modules/amazeui/dist/css/amazeui.css';

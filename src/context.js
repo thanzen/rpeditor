@@ -13,7 +13,7 @@ var Context = (function () {
         configurable: true
     });
     return Context;
-})();
+}());
 ;
 var context = new Context();
 Object.defineProperty(exports, "__esModule", { value: true });

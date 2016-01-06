@@ -4,8 +4,12 @@ import {default as Block} from '../models/block';
 
 export function openEditor(block:Block) {
   context.store.dispatch({ type: eventType.QUILL_OPEN});
-  context.store.dispatch({ type: eventType.BLOCK_SELECTED, block:block});
+  setSelectedQuillBlock(block);
   context.store.dispatch({ type: eventType.QUILL_CONTENT_CHANGE, content:block.content});
+}
+
+export function setSelectedQuillBlock(block:Block){
+    context.store.dispatch({ type: eventType.BLOCK_SELECTED, block:block});
 }
 
 export function closeEditor() {

@@ -1,9 +1,4 @@
-/*reference
-https://zenoamaro.github.io/react-quill
-https://github.com/hawkrives/react-quill
-*/
-///<reference path="../../../libs/typings/react.d.ts" />
-///<reference path="../../../libs/typings/classnames.d.ts" />
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -122,12 +117,12 @@ var QuillToolbar = (function (_super) {
         _super.apply(this, arguments);
     }
     QuillToolbar.prototype.render = function () {
-        return React.createElement("div", {"className": cx('quill-toolbar', this.props.className)}, this.props.items.map(renderItem));
+        return React.createElement("div", {className: cx('quill-toolbar', this.props.className)}, this.props.items.map(renderItem));
     };
     QuillToolbar.defaultProps = {
         items: defaultItems,
     };
     return QuillToolbar;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = QuillToolbar;

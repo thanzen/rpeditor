@@ -18,7 +18,7 @@ var Preview = (function (_super) {
         return (React.createElement("div", null, blocks));
     };
     return Preview;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Preview;
 ;

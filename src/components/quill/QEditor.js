@@ -108,6 +108,6 @@ var QuillComponent = (function (_super) {
         modules: {}
     };
     return QuillComponent;
-})(React.Component);
+}(React.Component));
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = QuillComponent;

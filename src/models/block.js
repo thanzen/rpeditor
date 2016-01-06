@@ -5,6 +5,6 @@ var Block = (function () {
         this.content = content;
     }
     return Block;
-})();
+}());
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Block;

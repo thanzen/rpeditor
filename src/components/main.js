@@ -1,5 +1,5 @@
 "use strict";
-var AppNew_1 = require("./AppNew");
+var App_1 = require("./App");
 var React = require('react');
 var ReactDom = require('react-dom');
 var react_router_1 = require('react-router');
@@ -13,4 +13,4 @@ require('../styles/quill.snow.css');
 require('../styles/editor.css');
 var store = redux_1.createStore(reducers_1.default);
 context_1.default.store = store;
-ReactDom.render((React.createElement(react_redux_1.Provider, {store: store}, React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: AppNew_1.default}, React.createElement(react_router_1.Route, {path: "*", component: AppNew_1.default}))))), document.getElementById('container'));
+ReactDom.render((React.createElement(react_redux_1.Provider, {store: store}, React.createElement(react_router_1.Router, null, React.createElement(react_router_1.Route, {path: "/", component: App_1.default}, React.createElement(react_router_1.Route, {path: "*", component: App_1.default}))))), document.getElementById('container'));

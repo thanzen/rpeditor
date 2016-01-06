@@ -14,7 +14,7 @@ var BlockList = (function (_super) {
     }
     BlockList.prototype.render = function () {
         var blocks = this.props.blocks.map(function (item) {
-            return React.createElement(amazeui_react_1.ListItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item}), " ");
+            return React.createElement(amazeui_react_1.ListItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item, quillBlockModel: this.props.quillBlockModel}), " ");
         });
         return (React.createElement(amazeui_react_1.List, null, blocks));
     };

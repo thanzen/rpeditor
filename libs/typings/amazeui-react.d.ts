@@ -6,4 +6,5 @@ declare module 'amazeui-react'{
   export var Button:any;
   export var Tabs:any;
   export var Divider:any;
+  export var Sticky:any;
 }

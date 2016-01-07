@@ -18,7 +18,7 @@ function indexOf(blocks, block) {
     if (blocks === void 0) { blocks = []; }
     var index = -1;
     for (var i = 0; i < blocks.length; i++) {
-        if (blocks[i].id == block.id) {
+        if (block && blocks[i].id == block.id) {
             return i;
         }
     }
@@ -93,7 +93,7 @@ function setMoveDown(state, action) {
     if (state === void 0) { state = false; }
     if (action.type == eventType_1.default.BLOCK_SELECTED) {
         var index = indexOf(context_1.default.store.getState().blocks, action.block);
-        if (index == context_1.default.store.getState().blocks.length - 1) {
+        if (index < 0 || index == context_1.default.store.getState().blocks.length - 1) {
             return false;
         }
         return true;

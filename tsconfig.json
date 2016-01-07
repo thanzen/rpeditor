@@ -46,16 +46,15 @@
         "./src/components/App(deprecated).tsx",
         "./src/components/Block.tsx",
         "./src/components/BlockContent.tsx",
-        "./src/components/BlockFooter.tsx",
         "./src/components/BlockList.tsx",
         "./src/components/Editor.tsx",
         "./src/components/Editor(deprecated).tsx",
+        "./src/components/FixedTopBar.tsx",
         "./src/components/main.tsx",
+        "./src/components/MenuItem.tsx",
         "./src/components/Preview.tsx",
         "./src/components/quill/QEditor.tsx",
-        "./src/components/quill/Toolbar.tsx",
-        "./src/components/toolbar/MenuItem.tsx",
-        "./src/components/toolbar/TopBar.tsx"
+        "./src/components/quill/Toolbar.tsx"
     ],
     "atom": {
         "rewriteTsconfig": true

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { default as EventType } from '../eventType';
 import {default as Block} from '../models/block';
+import {default as context} from '../context';
 let content1 ="Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 let content2="Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var initialState ={
@@ -8,7 +9,19 @@ var initialState ={
     showBlockEditor:false,
     selectedTab : 1,
     quillContent:"",
-    quillBlock:null
+    quillBlock:null,
+    canMoveUp:false,
+    canMoveDown:false
+}
+
+function indexOf(blocks:Block[]=[], block:Block){
+  var index = -1;
+  for(let i=0;i<blocks.length;i++){
+      if(blocks[i].id == block.id){
+        return i;
+      }
+  }
+  return index;
 }
 
 function toggleBlockEditor(state:boolean = initialState.showBlockEditor, action) {
@@ -64,6 +77,29 @@ function setQuillBlock(state:Block= null, action){
   return state;
 }
 
+function setMoveUp(state:boolean = false, action){
+  if(action.type == EventType.BLOCK_SELECTED){
+    var index = indexOf(context.store.getState().blocks,action.block);
+    if(index <= 0) {
+      return false;
+    }
+    return true;
+  }
+  return state;
+}
+
+
+function setMoveDown(state:boolean = false, action){
+  if(action.type == EventType.BLOCK_SELECTED){
+    var index = indexOf(context.store.getState().blocks,action.block);
+    if(index == context.store.getState().blocks.length -1) {
+      return false;
+    }
+    return true;
+  }
+  return state;
+}
+
 function mutateBlocks(state:Block[]=initialState.blocks, action){
   if(!action.block) return state;
   switch (action.type) {
@@ -83,7 +119,9 @@ const reducers = combineReducers({
   blocks: mutateBlocks,
   selectedTab:selectTab,
   quillBlock:setQuillBlock,
-  quillContent: changeQuillContent
+  quillContent: changeQuillContent,
+  canMoveDown:setMoveDown,
+  canMoveUp:setMoveUp
 })
 
 export default reducers

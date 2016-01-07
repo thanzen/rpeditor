@@ -6,11 +6,10 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = require('react');
 var BlockContent_1 = require("./BlockContent");
-var BlockFooter_1 = require("./BlockFooter");
 var actions_1 = require("../actions");
 var boxStyle = {
     padding: "2px",
-    border: "1px solid blue",
+    border: "1px solid",
     margin: "0"
 };
 var selectedStyle = {
@@ -34,7 +33,7 @@ var Block = (function (_super) {
         var style = selected ? selectedStyle : deSelectedStyle;
         return (React.createElement("div", {className: "block", style: style, onClick: function () {
             actions_1.setSelectedQuillBlock(selected ? null : _this.props.model);
-        }}, React.createElement(BlockContent_1.default, {model: this.props.model, boxStyle: boxStyle}), React.createElement(BlockFooter_1.default, {model: this.props.model})));
+        }}, React.createElement(BlockContent_1.default, {model: this.props.model, boxStyle: boxStyle})));
     };
     return Block;
 }(React.Component));

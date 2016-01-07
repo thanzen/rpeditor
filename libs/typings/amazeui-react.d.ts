@@ -7,4 +7,8 @@ declare module 'amazeui-react'{
   export var Tabs:any;
   export var Divider:any;
   export var Sticky:any;
+  export var Grid:any;
+  export var AvgGrid:any;
+  export var Col:any;
+
 }

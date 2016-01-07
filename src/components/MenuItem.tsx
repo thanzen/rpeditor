@@ -1,6 +1,6 @@
 import * as React  from 'react';
-import {default as BlockModal} from "../../models/block";
-import {openEditor,deleteBlock} from '../../actions'
+import {default as BlockModal} from "../models/block";
+import {openEditor,deleteBlock} from '../actions'
 
 interface Props { model?: BlockModal,activeIcon?:string,inactiveIcon:string, isActive?:boolean,onClick:Function}
 

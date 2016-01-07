@@ -1,7 +1,6 @@
 import * as React  from 'react';
 import {default as BlockModel} from "../models/block";
 import {default as BlockContent} from "./BlockContent";
-import {default as BlockFooter} from "./BlockFooter";
 import {default as dispatcher}  from "../dispatcher";
 import {default as eventType}  from "../eventType";
 import {setSelectedQuillBlock} from "../actions"
@@ -9,7 +8,7 @@ interface Props { model: BlockModel, quillBlockModel:BlockModel}
 
 const boxStyle = {
   padding: "2px",
-  border: "1px solid blue",
+  border: "1px solid",
   margin: "0"
 };
 
@@ -34,7 +33,6 @@ export default class Block extends React.Component<Props, {}> {
           setSelectedQuillBlock(selected ? null:this.props.model);
         }}>
           <BlockContent model = {this.props.model} boxStyle={boxStyle}/>
-          <BlockFooter model ={this.props.model}/>
         </div>
     );
   }

@@ -6,5 +6,5 @@
   height:400px;
 }
 .block :hover {
-    background-color: lightblue;
+     outline: #333 solid 1px;
 }

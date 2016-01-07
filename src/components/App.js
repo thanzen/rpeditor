@@ -6,10 +6,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var React = require('react');
 var Block_1 = require("./Block");
-var block_1 = require("../models/block");
 var amazeui_react_1 = require('amazeui-react');
 var Preview_1 = require('./Preview');
-var Topbar_1 = require('./toolbar/Topbar');
+var FixedTopBar_1 = require('./FixedTopBar');
 var Editor_1 = require('./Editor');
 var actions_1 = require('../actions');
 var react_redux_1 = require('react-redux');
@@ -23,13 +22,11 @@ var App = (function (_super) {
         };
     }
     App.prototype.render = function () {
-        var _a = this.props, blocks = _a.blocks, selectedTab = _a.selectedTab, quillBlock = _a.quillBlock, showBlockEditor = _a.showBlockEditor, quillContent = _a.quillContent;
+        var _a = this.props, blocks = _a.blocks, selectedTab = _a.selectedTab, quillBlock = _a.quillBlock, showBlockEditor = _a.showBlockEditor, quillContent = _a.quillContent, canMoveUp = _a.canMoveUp, canMoveDown = _a.canMoveDown;
         var blocksList = this.props.blocks.map(function (item) {
             return React.createElement(amazeui_react_1.ListItem, {key: item.id}, " ", React.createElement(Block_1.default, {model: item, quillBlockModel: quillBlock}));
         });
-        return (React.createElement("div", null, React.createElement(Topbar_1.default, {activeIcon: 'am-icon-edit', inactiveIcon: 'am-icon-edit', isActive: true, quillModel: quillBlock}), React.createElement(amazeui_react_1.Tabs, {activeKey: selectedTab, onSelect: this.handleSelect}, React.createElement(amazeui_react_1.Tabs.Item, {eventKey: 1, title: 'Editor'}, React.createElement(amazeui_react_1.List, null, blocksList), React.createElement(amazeui_react_1.Button, {bsSize: 'large', block: true, onClick: function () {
-            actions_1.addBlock(new block_1.default(0, ""));
-        }}, "+"), React.createElement(Editor_1.default, {theme: 'snow', quillBlock: quillBlock, showBlockEditor: showBlockEditor, quillContent: quillContent})), React.createElement(amazeui_react_1.Tabs.Item, {eventKey: 2, title: 'Preview...'}, React.createElement(Preview_1.default, {blocks: this.props.blocks})))));
+        return (React.createElement("div", null, React.createElement(FixedTopBar_1.default, {activeIcon: 'am-icon-edit', inactiveIcon: 'am-icon-edit', isActive: true, quillModel: quillBlock, canMoveUp: canMoveUp, canMoveDown: canMoveDown}), React.createElement(amazeui_react_1.Tabs, {activeKey: selectedTab, onSelect: this.handleSelect}, React.createElement(amazeui_react_1.Tabs.Item, {eventKey: 1, title: 'Editor'}, React.createElement(amazeui_react_1.List, null, blocksList), React.createElement(Editor_1.default, {theme: 'snow', quillBlock: quillBlock, showBlockEditor: showBlockEditor, quillContent: quillContent})), React.createElement(amazeui_react_1.Tabs.Item, {eventKey: 2, title: 'Preview...'}, React.createElement(Preview_1.default, {blocks: this.props.blocks})))));
     };
     return App;
 }(React.Component));
@@ -40,7 +37,9 @@ function select(state) {
         selectedTab: state.selectedTab,
         showBlockEditor: state.showBlockEditor,
         quillContent: state.quillContent,
-        quillBlock: state.quillBlock
+        quillBlock: state.quillBlock,
+        canMoveUp: state.canMoveUp,
+        canMoveDown: state.canMoveDown
     };
 }
 Object.defineProperty(exports, "__esModule", { value: true });

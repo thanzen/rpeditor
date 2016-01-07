@@ -2,6 +2,7 @@
 var redux_1 = require('redux');
 var eventType_1 = require('../eventType');
 var block_1 = require('../models/block');
+var context_1 = require('../context');
 var content1 = "Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
 var content2 = "Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
 var initialState = {
@@ -9,8 +10,20 @@ var initialState = {
     showBlockEditor: false,
     selectedTab: 1,
     quillContent: "",
-    quillBlock: null
+    quillBlock: null,
+    canMoveUp: false,
+    canMoveDown: false
 };
+function indexOf(blocks, block) {
+    if (blocks === void 0) { blocks = []; }
+    var index = -1;
+    for (var i = 0; i < blocks.length; i++) {
+        if (blocks[i].id == block.id) {
+            return i;
+        }
+    }
+    return index;
+}
 function toggleBlockEditor(state, action) {
     if (state === void 0) { state = initialState.showBlockEditor; }
     switch (action.type) {
@@ -65,6 +78,28 @@ function setQuillBlock(state, action) {
     }
     return state;
 }
+function setMoveUp(state, action) {
+    if (state === void 0) { state = false; }
+    if (action.type == eventType_1.default.BLOCK_SELECTED) {
+        var index = indexOf(context_1.default.store.getState().blocks, action.block);
+        if (index <= 0) {
+            return false;
+        }
+        return true;
+    }
+    return state;
+}
+function setMoveDown(state, action) {
+    if (state === void 0) { state = false; }
+    if (action.type == eventType_1.default.BLOCK_SELECTED) {
+        var index = indexOf(context_1.default.store.getState().blocks, action.block);
+        if (index == context_1.default.store.getState().blocks.length - 1) {
+            return false;
+        }
+        return true;
+    }
+    return state;
+}
 function mutateBlocks(state, action) {
     if (state === void 0) { state = initialState.blocks; }
     if (!action.block)
@@ -85,7 +120,9 @@ var reducers = redux_1.combineReducers({
     blocks: mutateBlocks,
     selectedTab: selectTab,
     quillBlock: setQuillBlock,
-    quillContent: changeQuillContent
+    quillContent: changeQuillContent,
+    canMoveDown: setMoveDown,
+    canMoveUp: setMoveUp
 });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = reducers;

@@ -12,7 +12,8 @@ var initialState = {
     quillContent: "",
     quillBlock: null,
     canMoveUp: false,
-    canMoveDown: false
+    canMoveDown: false,
+    isTopFixedBarActive: true
 };
 function indexOf(blocks, block) {
     if (blocks === void 0) { blocks = []; }
@@ -39,6 +40,16 @@ function selectTab(state, action) {
     if (state === void 0) { state = initialState.selectedTab; }
     if (action.type == eventType_1.default.QUILL_SELECT_TAB) {
         return action.key;
+    }
+    return state;
+}
+function setTopFixedBarVisibility(state, action) {
+    if (state === void 0) { state = initialState.isTopFixedBarActive; }
+    if (action.type == eventType_1.default.QUILL_SELECT_TAB) {
+        if (action.key == 1) {
+            return true;
+        }
+        return false;
     }
     return state;
 }
@@ -153,7 +164,8 @@ var reducers = redux_1.combineReducers({
     quillBlock: setQuillBlock,
     quillContent: changeQuillContent,
     canMoveDown: setMoveDown,
-    canMoveUp: setMoveUp
+    canMoveUp: setMoveUp,
+    isTopFixedBarActive: setTopFixedBarVisibility
 });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = reducers;

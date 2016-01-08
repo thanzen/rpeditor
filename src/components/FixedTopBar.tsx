@@ -4,12 +4,13 @@ import {default as MenuItem} from "./MenuItem";
 import {Sticky, Grid, Col, AvgGrid} from 'amazeui-react';
 import {openEditor, addBlock, deleteBlock, moveBlockUp, moveBlockDown} from '../actions'
 interface Props { quillModel?: BlockModel, activeIcon?: string, inactiveIcon: string, isActive?: boolean, canMoveUp?: boolean, canMoveDown?: boolean }
-const topbarStyle = {
+let topbarStyle = {
     textAlign: "center",
-    background: "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%)",
+    background: "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%)",
     width: "100%",
     boxShadow: " 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6)",
-    color: " rgba(0, 0, 0, 0.5)"
+    color: " rgba(0, 0, 0, 0.5)",
+    display: "block"
 }
 export default class FixedTopBar extends React.Component<Props, {}> {
     onClick = (callback?: any) => {
@@ -18,7 +19,7 @@ export default class FixedTopBar extends React.Component<Props, {}> {
         }
     }
     render() {
-        var icon = this.props.isActive ? this.props.activeIcon : this.props.inactiveIcon;
+        topbarStyle.display = this.props.isActive ? "block" : "none"
         var isIconActive = this.props.quillModel ? true : false;
         return (
             <Grid style={topbarStyle}>

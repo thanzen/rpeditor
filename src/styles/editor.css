@@ -8,3 +8,7 @@
 .block :hover {
      outline: #333 solid 1px;
 }
+
+body{
+  background: #FCFCFC;
+}

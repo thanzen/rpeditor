@@ -11,7 +11,8 @@ let initialState = {
     quillContent: "",
     quillBlock: null,
     canMoveUp: false,
-    canMoveDown: false
+    canMoveDown: false,
+    isTopFixedBarActive: true
 }
 
 function indexOf(blocks: Block[] = [], block: Block) {
@@ -38,6 +39,17 @@ function toggleBlockEditor(state: boolean = initialState.showBlockEditor, action
 function selectTab(state: number = initialState.selectedTab, action) {
     if (action.type == EventType.QUILL_SELECT_TAB) {
         return action.key;
+    }
+    return state;
+}
+
+
+function setTopFixedBarVisibility(state: boolean = initialState.isTopFixedBarActive, action) {
+    if (action.type == EventType.QUILL_SELECT_TAB) {
+        if (action.key == 1) {
+            return true;
+        }
+        return false;
     }
     return state;
 }
@@ -103,13 +115,13 @@ function moveBlockUp(state: Block[] = initialState.blocks, action) {
 
 function moveBlockDown(state: Block[] = initialState.blocks, action) {
     if (action.type == EventType.BLOCK_MOVE_DOWN) {
-      let blocks: Block[] = [...context.store.getState().blocks];;
-      let index = indexOf(blocks, action.block);
-      if (index < blocks.length- 1) {
-          blocks.splice(index, 1);
-          blocks.splice(index + 1, 0, action.block);
-          return blocks;
-      }
+        let blocks: Block[] = [...context.store.getState().blocks];;
+        let index = indexOf(blocks, action.block);
+        if (index < blocks.length - 1) {
+            blocks.splice(index, 1);
+            blocks.splice(index + 1, 0, action.block);
+            return blocks;
+        }
     }
     return state;
 }
@@ -150,7 +162,8 @@ const reducers = combineReducers({
     quillBlock: setQuillBlock,
     quillContent: changeQuillContent,
     canMoveDown: setMoveDown,
-    canMoveUp: setMoveUp
+    canMoveUp: setMoveUp,
+    isTopFixedBarActive: setTopFixedBarVisibility
 })
 
 export default reducers

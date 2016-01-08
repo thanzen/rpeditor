@@ -10,5 +10,7 @@ declare module 'amazeui-react'{
   export var Grid:any;
   export var AvgGrid:any;
   export var Col:any;
+  export var ScrollSpy:any;
+
 
 }

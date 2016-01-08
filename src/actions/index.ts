@@ -23,6 +23,7 @@ export function submitChange(block:Block) {
   }
   context.store.dispatch({ type: eventType.QUILL_SUBMIT_CHANGE, block:block});
   closeEditor();
+    setSelectedQuillBlock(block);
 }
 
 export function selectTab(key:number = 1){
@@ -39,4 +40,14 @@ export function deleteBlock(block:Block) {
 
 export function changeQuillContent(content:string){
   context.store.dispatch({ type: eventType.QUILL_CONTENT_CHANGE, content:content});
+}
+
+export function moveBlockUp(block:Block){
+    context.store.dispatch({ type: eventType.BLOCK_MOVE_UP, block:block});
+    setSelectedQuillBlock(block);
+}
+
+export function moveBlockDown(block:Block){
+    context.store.dispatch({ type: eventType.BLOCK_MOVE_DOWN, block:block});
+    setSelectedQuillBlock(block);
 }

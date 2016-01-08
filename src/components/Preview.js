@@ -13,7 +13,7 @@ var Preview = (function (_super) {
     }
     Preview.prototype.render = function () {
         var blocks = this.props.blocks.map(function (item) {
-            return React.createElement(BlockContent_1.default, {model: item});
+            return React.createElement(BlockContent_1.default, {key: item.id, model: item});
         });
         return (React.createElement("div", null, blocks));
     };

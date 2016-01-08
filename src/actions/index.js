@@ -22,6 +22,7 @@ function submitChange(block) {
     }
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_SUBMIT_CHANGE, block: block });
     closeEditor();
+    setSelectedQuillBlock(block);
 }
 exports.submitChange = submitChange;
 function selectTab(key) {
@@ -41,3 +42,13 @@ function changeQuillContent(content) {
     context_1.default.store.dispatch({ type: eventType_1.default.QUILL_CONTENT_CHANGE, content: content });
 }
 exports.changeQuillContent = changeQuillContent;
+function moveBlockUp(block) {
+    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_MOVE_UP, block: block });
+    setSelectedQuillBlock(block);
+}
+exports.moveBlockUp = moveBlockUp;
+function moveBlockDown(block) {
+    context_1.default.store.dispatch({ type: eventType_1.default.BLOCK_MOVE_DOWN, block: block });
+    setSelectedQuillBlock(block);
+}
+exports.moveBlockDown = moveBlockDown;

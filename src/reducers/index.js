@@ -89,6 +89,33 @@ function setMoveUp(state, action) {
     }
     return state;
 }
+function moveBlockUp(state, action) {
+    if (state === void 0) { state = initialState.blocks; }
+    if (action.type == eventType_1.default.BLOCK_MOVE_UP) {
+        var blocks = context_1.default.store.getState().blocks.slice();
+        var index = indexOf(blocks, action.block);
+        if (index > 0) {
+            blocks.splice(index, 1);
+            blocks.splice(index - 1, 0, action.block);
+            return blocks;
+        }
+    }
+    return state;
+}
+function moveBlockDown(state, action) {
+    if (state === void 0) { state = initialState.blocks; }
+    if (action.type == eventType_1.default.BLOCK_MOVE_DOWN) {
+        var blocks = context_1.default.store.getState().blocks.slice();
+        ;
+        var index = indexOf(blocks, action.block);
+        if (index < blocks.length - 1) {
+            blocks.splice(index, 1);
+            blocks.splice(index + 1, 0, action.block);
+            return blocks;
+        }
+    }
+    return state;
+}
 function setMoveDown(state, action) {
     if (state === void 0) { state = false; }
     if (action.type == eventType_1.default.BLOCK_SELECTED) {
@@ -111,6 +138,10 @@ function mutateBlocks(state, action) {
             return deleteBlock(state, action);
         case eventType_1.default.QUILL_SUBMIT_CHANGE:
             return submitBlockChange(state, action);
+        case eventType_1.default.BLOCK_MOVE_UP:
+            return moveBlockUp(state, action);
+        case eventType_1.default.BLOCK_MOVE_DOWN:
+            return moveBlockDown(state, action);
         default:
             return state;
     }

@@ -26,11 +26,11 @@ export default class FixedTopBar extends React.Component<Props, {}> {
                 <Col sm={12} smOffset={0} md={4} mdOffset={4} lg={2} lgOffset={5}>
                     <Sticky top={0}>
                         <AvgGrid sm={5}>
-                            <li><MenuItem activeIcon="am-icon-file-o" inactiveIcon="am-icon-file-o" isActive={true} onClick={() => this.onClick(addBlock(new BlockModel(0, ""))) }/></li>
-                            <li><MenuItem activeIcon="am-icon-edit" inactiveIcon="am-icon-edit" isActive={isIconActive} onClick={() => this.onClick(openEditor(this.props.quillModel)) }/></li>
-                            <li><MenuItem activeIcon="am-icon-remove" inactiveIcon="am-icon-remove" isActive={isIconActive} onClick={() => this.onClick(deleteBlock(this.props.quillModel)) }/></li>
-                            <li><MenuItem activeIcon="am-icon-arrow-up" inactiveIcon="am-icon-arrow-up" isActive={this.props.canMoveUp} onClick={() => this.onClick(moveBlockUp(this.props.quillModel)) }/></li>
-                            <li><MenuItem activeIcon="am-icon-arrow-down" inactiveIcon="am-icon-arrow-down" isActive={this.props.canMoveDown} onClick={() => this.onClick(moveBlockDown(this.props.quillModel)) }/></li>
+                            <li><MenuItem activeIcon="am-icon-file-o" inactiveIcon="am-icon-file-o" tooltip={"new block"} isActive={true} onClick={() => this.onClick(addBlock(new BlockModel(0, ""))) }/></li>
+                            <li><MenuItem activeIcon="am-icon-edit" inactiveIcon="am-icon-edit" tooltip={"edit"} isActive={isIconActive} onClick={() => this.onClick(openEditor(this.props.quillModel)) }/></li>
+                            <li><MenuItem activeIcon="am-icon-remove" inactiveIcon="am-icon-remove" tooltip={"delete"} isActive={isIconActive} onClick={() => this.onClick(deleteBlock(this.props.quillModel)) }/></li>
+                            <li><MenuItem activeIcon="am-icon-arrow-up" inactiveIcon="am-icon-arrow-up" tooltip={"move up"} isActive={this.props.canMoveUp} onClick={() => this.onClick(moveBlockUp(this.props.quillModel)) }/></li>
+                            <li><MenuItem activeIcon="am-icon-arrow-down" inactiveIcon="am-icon-arrow-down" tooltip={"move down"} isActive={this.props.canMoveDown} onClick={() => this.onClick(moveBlockDown(this.props.quillModel)) }/></li>
                         </AvgGrid>
                     </Sticky>
                 </Col>

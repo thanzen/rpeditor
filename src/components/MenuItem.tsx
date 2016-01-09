@@ -1,8 +1,9 @@
 import * as React  from 'react';
 import {default as BlockModal} from "../models/block";
 import {openEditor, deleteBlock} from '../actions'
+import {default as LinkTooltip} from './LinkTooltip';
 
-interface Props { model?: BlockModal, activeIcon?: string, inactiveIcon: string, isActive?: boolean, onClick: Function }
+interface Props { model?: BlockModal, activeIcon?: string, inactiveIcon: string, isActive?: boolean, onClick: Function, tooltip?:string}
 
 export default class MenuItem extends React.Component<Props, {}> {
     onClick = () => {
@@ -14,7 +15,7 @@ export default class MenuItem extends React.Component<Props, {}> {
         var icon = this.props.isActive ? this.props.activeIcon : this.props.inactiveIcon;
         var content = <i className={icon + " am-icon-fw"} onClick={this.onClick}></i>;
         if (this.props.isActive) {
-            content = (<a>{content}</a>);
+            content = (<LinkTooltip tooltip={this.props.tooltip}> {content}</LinkTooltip>);
         }
         return (content);
     }

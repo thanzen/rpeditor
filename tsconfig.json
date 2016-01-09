@@ -46,6 +46,7 @@
         "./src/components/BlockContent.tsx",
         "./src/components/Editor.tsx",
         "./src/components/FixedTopBar.tsx",
+        "./src/components/LinkTooltip.tsx",
         "./src/components/main.tsx",
         "./src/components/MenuItem.tsx",
         "./src/components/Preview.tsx",

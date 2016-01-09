@@ -5,6 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require('react');
+var LinkTooltip_1 = require('./LinkTooltip');
 var MenuItem = (function (_super) {
     __extends(MenuItem, _super);
     function MenuItem() {
@@ -20,7 +21,7 @@ var MenuItem = (function (_super) {
         var icon = this.props.isActive ? this.props.activeIcon : this.props.inactiveIcon;
         var content = React.createElement("i", {className: icon + " am-icon-fw", onClick: this.onClick});
         if (this.props.isActive) {
-            content = (React.createElement("a", null, content));
+            content = (React.createElement(LinkTooltip_1.default, {tooltip: this.props.tooltip}, " ", content));
         }
         return (content);
     };

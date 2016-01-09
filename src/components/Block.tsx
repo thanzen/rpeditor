@@ -12,7 +12,7 @@ const boxStyle = {
 };
 
 const selectedStyle = {
-    background: "#3374C2"
+    background: "#C4C2B3"
 }
 
 const deSelectedStyle = {

@@ -13,7 +13,7 @@ var boxStyle = {
     margin: "0"
 };
 var selectedStyle = {
-    background: "#3374C2"
+    background: "#C4C2B3"
 };
 var deSelectedStyle = {
     background: "white"

@@ -10,7 +10,7 @@ let topbarStyle = {
     width: "100%",
     boxShadow: " 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6)",
     color: " rgba(0, 0, 0, 0.5)",
-    display: "block"
+    visibility: "visible"
 }
 export default class FixedTopBar extends React.Component<Props, {}> {
     onClick = (callback?: any) => {
@@ -19,11 +19,11 @@ export default class FixedTopBar extends React.Component<Props, {}> {
         }
     }
     render() {
-        topbarStyle.display = this.props.isActive ? "block" : "none"
+        topbarStyle.visibility = this.props.isActive ? "visible" : "hidden"
         var isIconActive = this.props.quillModel ? true : false;
         return (
             <Grid style={topbarStyle}>
-                <Col sm={2} smOffset={5}>
+                <Col sm={12} smOffset={0} md={4} mdOffset={4} lg={2} lgOffset={5}>
                     <Sticky top={0}>
                         <AvgGrid sm={5}>
                             <li><MenuItem activeIcon="am-icon-file-o" inactiveIcon="am-icon-file-o" isActive={true} onClick={() => this.onClick(addBlock(new BlockModel(0, ""))) }/></li>

@@ -44,7 +44,6 @@
         "./src/components/App.tsx",
         "./src/components/Block.tsx",
         "./src/components/BlockContent.tsx",
-        "./src/components/BlockListss.tsx",
         "./src/components/Editor.tsx",
         "./src/components/FixedTopBar.tsx",
         "./src/components/main.tsx",

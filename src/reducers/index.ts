@@ -2,10 +2,11 @@ import { combineReducers } from 'redux'
 import { default as EventType } from '../eventType';
 import {default as Block} from '../models/block';
 import {default as context} from '../context';
-let content1 = "Rpeditor is a quill.js based block editor.</br>Rpeditor is written in typescript, therefore, any js files under src folder are not supposed to be modfied,</br>but ts or tsx files.</br>You can find source code in the <a href='https://github.com/thanzen/rpeditor'>github</a>";
-let content2 = "Todo:</br>1. Support block level drag and drop.</br>2. Styling the application.(help wanted).</br><img src='http://i.cbc.ca/1.3163246.1437577968!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/robert-gonsalves-deep-dream.jpg'/>";
+let content1 = "Rpeditor is a block editor based on quill.<br>React, Typescript and Redux are highly used in the code, and atom is the preferred IDE.<br>You can find source code in the <a href=\"https://github.com/thanzen/rpeditor\">github</a>";
+let content2 = "Features:<br>*  WYSWYG<br>*  BLOCK<br>*  PEVIEW<br>*  RESPONSIVE<br>*  CHANGE BLOCK POSITION";
+let content3 ="What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\"";
 let initialState = {
-    blocks: [new Block(1, content1), new Block(2, content2)],
+    blocks: [new Block(1, content1), new Block(2, content2), new Block(3,content3)],
     showBlockEditor: false,
     selectedTab: 1,
     quillContent: "",

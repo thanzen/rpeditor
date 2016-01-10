@@ -1,6 +1,6 @@
 import * as React  from 'react';
-import {default as BlockModel} from "../models/block";
-import {default as MenuItem} from "./MenuItem";
+import BlockModel from "../models/block";
+import MenuItem from "./MenuItem";
 import {Sticky, Grid, Col, AvgGrid} from 'amazeui-react';
 import {openEditor, addBlock, deleteBlock, moveBlockUp, moveBlockDown} from '../actions'
 interface Props { quillModel?: BlockModel, activeIcon?: string, inactiveIcon: string, isActive?: boolean, canMoveUp?: boolean, canMoveDown?: boolean }

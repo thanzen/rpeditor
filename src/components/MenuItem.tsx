@@ -1,7 +1,7 @@
 import * as React  from 'react';
-import {default as BlockModal} from "../models/block";
+import BlockModal from "../models/block";
 import {openEditor, deleteBlock} from '../actions'
-import {default as LinkTooltip} from './LinkTooltip';
+import LinkTooltip from './LinkTooltip';
 
 interface Props { model?: BlockModal, activeIcon?: string, inactiveIcon: string, isActive?: boolean, onClick: Function, tooltip?:string}
 

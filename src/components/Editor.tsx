@@ -1,8 +1,8 @@
 import * as React  from 'react';
 import {ModalTrigger, Modal, Button, Divider} from 'amazeui-react';
-import {default as BlockModal} from "../models/block";
+import BlockModal from "../models/block";
 import QuillComponent from "./quill/QEditor";
-import {default as eventType}  from "../eventType";
+import eventType  from "../eventType";
 import {changeQuillContent, openEditor, closeEditor, submitChange} from "../actions";
 interface Props { theme?: string, quillBlock?: BlockModal, showBlockEditor?: boolean, quillContent?: string, onOpen?: Function }
 interface State { }

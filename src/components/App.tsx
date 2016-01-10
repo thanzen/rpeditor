@@ -1,11 +1,11 @@
 import * as React  from 'react';
-import BlockView from "./Block";
-import {default as BlockModel} from "../models/block";
+import Block from "./Block";
+import BlockModel from "../models/block";
 import {ListItem, List, Button, Tabs, Grid, Col} from 'amazeui-react';
-import {default as Preview} from './Preview';
-import {default as FixedTopBar} from './FixedTopBar';
+import Preview from './Preview';
+import FixedTopBar from './FixedTopBar';
 import Editor from './Editor';
-import {default as eventType}  from "../eventType";
+import eventType  from "../eventType";
 
 import {openEditor, closeEditor, selectTab} from '../actions'
 import { connect } from 'react-redux';
@@ -23,7 +23,7 @@ class App extends React.Component<Props, State> {
     render() {
         const { blocks, selectedTab, quillBlock, showBlockEditor, quillContent, canMoveUp, canMoveDown, isTopFixedBarActive } = this.props;
         var blocksList: any = this.props.blocks.map(function(item) {
-            return <ListItem  key={item.id} ><BlockView model={item} quillBlockModel={quillBlock}/></ListItem>;
+            return <ListItem  key={item.id} ><Block model={item} quillBlockModel={quillBlock}></Block></ListItem>;
         });
         return (<div  className={"container"}>
             <FixedTopBar activeIcon='am-icon-edit' inactiveIcon='am-icon-edit' isActive={isTopFixedBarActive} quillModel={quillBlock} canMoveUp={canMoveUp} canMoveDown = {canMoveDown}>

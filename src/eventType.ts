@@ -8,8 +8,6 @@ var EventType = {
     BLOCK_MOVE_UP:"BLOCK_MOVE_UP",
     BLOCK_MOVE_DOWN:"BLOCK_MOVE_DOWN",
 
-
-
     //block realted event types
     BLOCK_ADD: "BLOCK_ADD",
     BLOCK_DELTE: "BLOCK_DELETE",

@@ -5,7 +5,7 @@ var block_1 = require('../models/block');
 var context_1 = require('../context');
 var content1 = "Rpeditor is a block editor based on quill.<br>React, Typescript and Redux are highly used in the code, and atom is the preferred IDE.<br>You can find source code in the <a href=\"https://github.com/thanzen/rpeditor\">github</a>";
 var content2 = "Features:<br>*  WYSWYG<br>*  BLOCK<br>*  PEVIEW<br>*  RESPONSIVE<br>*  CHANGE BLOCK POSITION";
-var content3 = "What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\"";
+var content3 = "What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\">";
 var initialState = {
     blocks: [new block_1.default(1, content1), new block_1.default(2, content2), new block_1.default(3, content3)],
     showBlockEditor: false,

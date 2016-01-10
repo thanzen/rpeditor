@@ -4,7 +4,7 @@ import {default as Block} from '../models/block';
 import {default as context} from '../context';
 let content1 = "Rpeditor is a block editor based on quill.<br>React, Typescript and Redux are highly used in the code, and atom is the preferred IDE.<br>You can find source code in the <a href=\"https://github.com/thanzen/rpeditor\">github</a>";
 let content2 = "Features:<br>*  WYSWYG<br>*  BLOCK<br>*  PEVIEW<br>*  RESPONSIVE<br>*  CHANGE BLOCK POSITION";
-let content3 ="What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\"";
+let content3 ="What I like?<br><img src=\"https://talks.golang.org/2014/readability/gopher-ok-no.png\">";
 let initialState = {
     blocks: [new Block(1, content1), new Block(2, content2), new Block(3,content3)],
     showBlockEditor: false,

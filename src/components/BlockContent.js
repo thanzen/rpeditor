@@ -11,7 +11,7 @@ var BlockContent = (function (_super) {
         _super.apply(this, arguments);
     }
     BlockContent.prototype.render = function () {
-        return (React.createElement("div", {dangerouslySetInnerHTML: { __html: this.props.model.content.replace(/ /g, "\u00a0") }, style: this.props.boxStyle}));
+        return (React.createElement("div", {dangerouslySetInnerHTML: { __html: this.props.model.content.replace(/(?!<[^<]*) (?![^<>]*>)/g, "\u00a0") }, style: this.props.boxStyle}));
     };
     return BlockContent;
 }(React.Component));
